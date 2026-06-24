@@ -1,0 +1,21 @@
+{
+    "slug": "home",
+    "title": "Home",
+    "sections": [
+      {
+        "id": "sec_0",
+        "type": "header",
+        "navLinks": [
+          { "label": "About", "href": "#about" },
+          { "label": "Services", "href": "#services" },
+          { "label": "Why Us", "href": "#why-us" },
+          { "label": "Testimonials", "href": "#testimonials" },
+          { "label": "Contact", "href": "#contact" }
+        ],
+        "cta": {
+          "label": "Book a Consultation",
+          "href": "#contact"
+        }
+      }
+    ]
+  }
