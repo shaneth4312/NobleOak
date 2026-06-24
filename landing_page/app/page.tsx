@@ -1,11 +1,11 @@
 import { SectionRenderer } from "@/components/SectionRenderer";
-import { getPageBySlug } from "@/lib/getPage";
+import { fetchPageBySlug } from "@/lib/fetchPage";
 import { notFound } from "next/navigation";
 
 export default async function Home() {
-  const page = await getPageBySlug("home");
+  const page = await fetchPageBySlug("home");
 
-  if (!page) {
+  if (!page?.sections?.length) {
     notFound();
   }
 

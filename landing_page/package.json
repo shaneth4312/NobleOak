@@ -1,12 +1,13 @@
 {
-  "name": "landing_page",
+  "name": "handover",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seed": "tsx scripts/seed-db.ts"
   },
   "dependencies": {
     "mongodb": "^7.3.0",

@@ -40,9 +40,13 @@ I used Cursor (Composer 2.5) to edit and structure this README and the landing p
 
 ## Build progress
 
-I am working on the main structure of the website first — outlining how sections sit on the page, where they appear, the colour scheme, and use of images. Page data is already driven by [`home.json`](./landing_page/data/pages/home.json), loaded server-side through [`getPage.ts`](./landing_page/lib/getPage.ts) and rendered as section components. Eventually I will add a contact form as the main call to action for the landing page, with a Next.js API route handling validation and secure submission to MongoDB, in line with the task requirements.
+Page data is driven by [`home.json`](./landing_page/data/pages/home.json), served through a Next.js API route at `/api/pages/[slug]` and fetched by the home page via [`fetchPage.ts`](./landing_page/lib/fetchPage.ts). Each section is rendered through [`SectionRenderer`](./landing_page/components/SectionRenderer.tsx) as its own block component.
 
-So far I have built the header, hero, and about us sections. Once I have outlined all the sections I believe should be on the landing page, I will focus on functionality — validations, security, and the contact form — while keeping the design in line with the final prototype.
+I created the remaining blocks I currently see fit for the landing page — header, hero, about, services, logo partners, CTA, contact form, and footer — and started adding functionality. I spent time setting up validation for the form, testing submissions as JSON first, then created an [`/api/leads`](./landing_page/app/api/leads/route.ts) route to handle actual submissions into MongoDB.
+
+While doing that, I used AI to quickly template the logo partners, CTA, services, and footer blocks based on my previously coded components. Once that was done, I used AI to test validation for errors and improvements. **[AI used]**
+
+A seed script has been created for local database setup — see [landing_page/README.md](./landing_page/README.md).
 
 ## Where AI was used
 
@@ -50,3 +54,5 @@ So far I have built the header, hero, and about us sections. Once I have outline
 - **Logo concepts** — AI was used to generate logo iterations from the colour palette and client brief.
 - **HTML prototyping** — AI was used to build three static style explorations and refine sections into the final prototype.
 - **README and setup documentation** — AI was used to restructure and lay out the README and setup instructions effectively, based on the task brief and my descriptions.
+- **Landing page blocks** — AI was used to quickly template the logo partners, CTA, services, and footer blocks based on my existing components.
+- **Form validation** — AI was used to test validation for errors and suggest improvements.
