@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NobleOak Partners — Nocturne</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0A1C2E;
+      --forest: #1E3329;
+      --gold: #B5935B;
+      --cream: #F4F2ED;
+      --charcoal: #1C1C1C;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      color: var(--cream);
+      background: var(--charcoal);
+      line-height: 1.7;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* Header — floating glass */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 2rem;
+      background: #fff;
+      border-bottom: 1px solid rgba(181, 147, 91, 0.35);
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo img { height: 40px; width: auto; }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 0.25rem;
+    }
+
+    nav a {
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+      background: rgba(181, 147, 91, 0.1);
+    }
+
+    nav .nav-highlight {
+      color: var(--charcoal);
+      background: var(--gold);
+    }
+
+    nav .nav-highlight:hover {
+      background: var(--cream);
+      color: var(--navy);
+    }
+
+    /* Hero — full bleed dark with gradient */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 6rem 2rem 4rem;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(30, 51, 41, 0.6) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(10, 28, 46, 0.8) 0%, transparent 50%),
+        var(--charcoal);
+    }
+
+    .hero-grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(181, 147, 91, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(181, 147, 91, 0.04) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4rem;
+      align-items: end;
+    }
+
+    .hero-text { max-width: 680px; }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    .hero-label::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(244, 242, 237, 0.65);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--charcoal);
+      padding: 1rem 2rem;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: all 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--cream);
+    }
+
+    .btn-ghost {
+      color: var(--cream);
+      padding: 1rem 2rem;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 1px solid rgba(244, 242, 237, 0.25);
+      transition: border-color 0.2s;
+    }
+
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-card {
+      background: rgba(10, 28, 46, 0.6);
+      border: 1px solid rgba(181, 147, 91, 0.25);
+      padding: 2rem;
+      width: 280px;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-card ul {
+      list-style: none;
+    }
+
+    .hero-card li {
+      font-size: 0.85rem;
+      color: rgba(244, 242, 237, 0.7);
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(181, 147, 91, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-card li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* About — alternating bands */
+    .about {
+      background: var(--navy);
+      padding: 6rem 2rem;
+    }
+
+    .about-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .about-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 3rem;
+      margin-bottom: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .about-top h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      max-width: 500px;
+      line-height: 1.25;
+    }
+
+    .about-top p {
+      max-width: 480px;
+      color: rgba(244, 242, 237, 0.65);
+      font-size: 1rem;
+    }
+
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(181, 147, 91, 0.2);
+    }
+
+    .feature-card {
+      background: var(--navy);
+      padding: 2rem 1.5rem;
+      transition: background 0.2s;
+    }
+
+    .feature-card:hover { background: var(--forest); }
+
+    .feature-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.75rem;
+      color: var(--cream);
+    }
+
+    .feature-card p {
+      font-size: 0.85rem;
+      color: rgba(244, 242, 237, 0.55);
+      line-height: 1.6;
+    }
+
+    /* Testimonial — full width statement */
+    .testimonial {
+      padding: 5rem 2rem;
+      text-align: center;
+      position: relative;
+      background: var(--charcoal);
+    }
+
+    .testimonial::before,
+    .testimonial::after {
+      content: '"';
+      font-family: 'Playfair Display', serif;
+      font-size: 12rem;
+      color: rgba(181, 147, 91, 0.06);
+      position: absolute;
+      line-height: 1;
+    }
+
+    .testimonial::before { top: 0; left: 5%; }
+    .testimonial::after { bottom: -4rem; right: 5%; transform: rotate(180deg); }
+
+    .testimonial-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .testimonial blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--cream);
+      margin-bottom: 2rem;
+    }
+
+    .testimonial-line {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 1.5rem;
+    }
+
+    .testimonial cite {
+      font-style: normal;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* Contact — dark form */
+    .contact {
+      background: var(--forest);
+      padding: 6rem 2rem;
+    }
+
+    .contact-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .contact-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .contact-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-header p {
+      color: rgba(244, 242, 237, 0.6);
+    }
+
+    .contact-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .form-group { display: flex; flex-direction: column; }
+    .form-group.full { grid-column: 1 / -1; }
+
+    label {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    input, select, textarea {
+      background: rgba(28, 28, 28, 0.5);
+      border: 1px solid rgba(181, 147, 91, 0.2);
+      color: var(--cream);
+      padding: 1rem 1.25rem;
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: rgba(244, 242, 237, 0.3);
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    select option { background: var(--charcoal); }
+
+    textarea { min-height: 140px; resize: vertical; }
+
+    .btn-submit {
+      grid-column: 1 / -1;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 1.1rem 2rem;
+      font-family: inherit;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .btn-submit:hover {
+      background: var(--gold);
+      color: var(--charcoal);
+    }
+
+    /* Footer */
+    footer {
+      background: #fff;
+      color: var(--charcoal);
+      border-top: 1px solid rgba(181, 147, 91, 0.35);
+      padding: 3rem 2rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, 1fr);
+      gap: 2rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(10, 28, 46, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    .footer-brand img { height: 36px; margin-bottom: 1rem; }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: rgba(28, 28, 28, 0.65);
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+
+    .footer-col li { margin-bottom: 0.5rem; }
+
+    .footer-col a {
+      color: rgba(28, 28, 28, 0.65);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: var(--navy); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.75rem;
+      color: rgba(28, 28, 28, 0.5);
+    }
+
+    @media (max-width: 900px) {
+      nav ul { display: none; }
+      .hero-content { grid-template-columns: 1fr; }
+      .hero-card { width: 100%; }
+      .feature-cards { grid-template-columns: 1fr 1fr; }
+      .contact-form { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 500px) {
+      .feature-cards { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <img src="../Task Assets/Logo_Transparent/Logo_Rectangle_Transparent.png" alt="NobleOak Partners">
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#testimonial">Clients</a></li>
+          <li><a href="#contact" class="nav-highlight">Enquire</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid-lines"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-label">Lorem Ipsum Dolor</div>
+        <h1>Sit amet <em>consectetur</em> elit</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Lorem ipsum</a>
+          <a href="#about" class="btn-ghost">Dolor sit amet</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3>Lorem ipsum</h3>
+        <ul>
+          <li>Dolor sit amet</li>
+          <li>Consectetur elit</li>
+          <li>Sed do eiusmod</li>
+          <li>Tempor incididunt</li>
+          <li>Ut labore dolore</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-top">
+        <h2>Lorem ipsum dolor sit amet consectetur</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.</p>
+      </div>
+      <div class="feature-cards">
+        <div class="feature-card">
+          <div class="feature-num">01</div>
+          <h3>Lorem ipsum</h3>
+          <p>Dolor sit amet, consectetur adipiscing elit. Maecenas mattis, tortor nec posuere consectetur.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-num">02</div>
+          <h3>Dolor sit</h3>
+          <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-num">03</div>
+          <h3>Amet elit</h3>
+          <p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-num">04</div>
+          <h3>Consectetur</h3>
+          <p>Irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonial" id="testimonial">
+    <div class="testimonial-inner">
+      <blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et nunc sed.</blockquote>
+      <div class="testimonial-line"></div>
+      <cite>Lorem Ipsum · Dolor Sit Amet</cite>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="contact-header">
+        <h2>Lorem ipsum dolor sit</h2>
+        <p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <form class="contact-form" action="#" method="post">
+        <div class="form-group">
+          <label for="first-name">First name</label>
+          <input type="text" id="first-name" name="first_name" placeholder="Lorem ipsum" required>
+        </div>
+        <div class="form-group">
+          <label for="last-name">Last name</label>
+          <input type="text" id="last-name" name="last_name" placeholder="Dolor sit" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="lorem@ipsum.dolor" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Telephone</label>
+          <input type="tel" id="phone" name="phone" placeholder="+44">
+        </div>
+        <div class="form-group full">
+          <label for="interest">Area of interest</label>
+          <select id="interest" name="interest">
+            <option value="">Lorem ipsum</option>
+            <option>Dolor sit amet</option>
+            <option>Consectetur elit</option>
+            <option>Sed do eiusmod</option>
+            <option>Tempor incididunt</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label for="message">Your enquiry</label>
+          <textarea id="message" name="message" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Lorem ipsum</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="../Task Assets/Logo_Transparent/Logo_Square_Transparent.png" alt="NobleOak Partners">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Lorem</h4>
+          <ul>
+            <li><a href="#">Ipsum dolor</a></li>
+            <li><a href="#">Sit amet</a></li>
+            <li><a href="#">Consectetur</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Ipsum</h4>
+          <ul>
+            <li><a href="#">Dolor sit</a></li>
+            <li><a href="#">Amet elit</a></li>
+            <li><a href="#">Sed do</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Dolor</h4>
+          <ul>
+            <li><a href="#">Lorem ipsum</a></li>
+            <li><a href="#">Consectetur</a></li>
+            <li><a href="#">Adipiscing</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Lorem Ipsum. Dolor sit amet.</span>
+        <span>Consectetur adipiscing elit sed do eiusmod.</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
