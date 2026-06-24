@@ -68,7 +68,7 @@ Both the contact form and newsletter submissions have validation on the client a
 
 Using my time effectively, I focused on the needs of the task first and utilised AI for documentation and speeding up design and templating processes. The final product can be found in [`landing_page`](./landing_page/) — see [setup instructions](./landing_page/README.md).
 
-I had some spare time (about 30 minutes) before hitting the 3 hour 30 minute mark, and used it to update the visuals — adding motions, animations, and branding shapes to bring the page to life. While the focus is on functionality, providing a site that does not meet a quality standard I hold myself to would not be right.
+I had some spare time (about 30 minutes) before hitting the 3 hour 30 minute mark, and used it to update the visuals — adding motions, animations, and branding shapes to bring the page to life. While the focus is on functionality, providing a site that does not meet a quality standard I hold myself to would not be right. **[AI used]**
 
 ## Trade-offs
 
@@ -90,3 +90,4 @@ I would also add rate limiting and origin checks on API routes, expand automated
 - **README and setup documentation** — AI was used to restructure and lay out the README and setup instructions effectively, based on the task brief and my descriptions.
 - **Landing page blocks** — AI was used to quickly template the logo partners, CTA, services, and footer blocks based on my existing components.
 - **Form validation** — AI was used to test validation for errors and suggest improvements, including additional server-side rules for the service field.
+- **Visual design, motion and animations** — AI was used to update designs and add animations and motion to bring the site to life, using examples I provided.
