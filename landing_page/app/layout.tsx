@@ -15,12 +15,13 @@ const geistMono = Geist_Mono({
 const brandSerif = Cinzel({
   variable: "--font-brand-serif",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Lorem Ipsum",
-  description: "Dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.",
+  title: "NobleOak Partners | Wealth, Tax and Succession Advisory",
+  description:
+    "Discreet wealth management, tax planning and succession advisory for affluent individuals, families and business owners worldwide.",
 };
 
 export default function RootLayout({
@@ -32,8 +33,9 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${brandSerif.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-surface text-navy">
+      <body className="min-h-full flex flex-col bg-surface text-navy" suppressHydrationWarning>
         {children}
       </body>
     </html>

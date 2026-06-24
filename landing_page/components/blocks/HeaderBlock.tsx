@@ -1,8 +1,11 @@
 "use client";
 
 import { BrandLogo } from "@/components/BrandLogo";
+import { CtaButton } from "@/components/ui/CtaButton";
+import { BRAND, navLink } from "@/lib/brand";
 import { handleAnchorClick } from "@/lib/scrollToSection";
 import type { HeaderNavLink, HeaderSection } from "@/lib/types";
+import { sectionInsetX } from "@/lib/sectionLayout";
 import { useLayoutEffect } from "react";
 
 type HeaderBlockProps = Omit<HeaderSection, "type">;
@@ -11,8 +14,8 @@ function NavLink({ link }: { link: HeaderNavLink }) {
   if (link.href) {
     return (
       <a
+        className={navLink}
         href={link.href}
-        className="relative pb-0.5 text-[15px] font-medium text-navy/75 transition-colors hover:text-navy after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-gold after:transition-all hover:after:w-full"
         onClick={(e) => handleAnchorClick(e, link.href)}
       >
         {link.label}
@@ -20,7 +23,7 @@ function NavLink({ link }: { link: HeaderNavLink }) {
     );
   }
 
-  return <span className="text-[15px] font-medium text-navy/75">{link.label}</span>;
+  return <span className={navLink}>{link.label}</span>;
 }
 
 export function HeaderBlock({ navLinks = [], cta }: HeaderBlockProps) {
@@ -47,13 +50,15 @@ export function HeaderBlock({ navLinks = [], cta }: HeaderBlockProps) {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b-2 border-gold/25 bg-surface/95 text-navy backdrop-blur-sm">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-8 py-5 lg:gap-12 lg:px-16">
-        <div className="flex min-w-0 flex-1 items-center gap-10 lg:gap-14">
+    <header className="sticky top-0 z-50 w-full border-b border-navy/10 bg-white text-navy shadow-sm shadow-navy/5">
+      <div
+        className={`${sectionInsetX} flex items-center justify-between gap-6 py-[30px] lg:gap-10`}
+      >
+        <div className="flex min-w-0 flex-1 items-center gap-8 lg:gap-[60px]">
           <a
             href="#"
             className="shrink-0"
-            aria-label="NobleOak Partners home"
+            aria-label={`${BRAND.name} home`}
             onClick={(e) => handleAnchorClick(e, "#")}
           >
             <BrandLogo priority />
@@ -61,7 +66,7 @@ export function HeaderBlock({ navLinks = [], cta }: HeaderBlockProps) {
 
           {navLinks.length > 0 ? (
             <nav aria-label="Main navigation">
-              <ul className="hidden items-center gap-8 lg:flex">
+              <ul className="hidden items-center gap-[30px] md:flex">
                 {navLinks.map((link) => (
                   <li key={link.label}>
                     <NavLink link={link} />
@@ -72,21 +77,7 @@ export function HeaderBlock({ navLinks = [], cta }: HeaderBlockProps) {
           ) : null}
         </div>
 
-        {cta ? (
-          cta.href ? (
-            <a
-              href={cta.href}
-              className="shrink-0 rounded border border-navy/20 px-5 py-2.5 text-[13px] font-semibold tracking-wide text-navy transition-colors hover:border-navy hover:bg-navy hover:text-surface"
-              onClick={(e) => handleAnchorClick(e, cta.href)}
-            >
-              {cta.label}
-            </a>
-          ) : (
-            <span className="shrink-0 rounded border border-navy/20 px-5 py-2.5 text-[13px] font-semibold tracking-wide text-navy">
-              {cta.label}
-            </span>
-          )
-        ) : null}
+        {cta ? <CtaButton cta={cta} variant="primary" withArrow={false} /> : null}
       </div>
     </header>
   );

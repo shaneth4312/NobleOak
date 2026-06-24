@@ -52,9 +52,35 @@ I have since added new sections — **why us**, **testimonials**, and **case stu
 
 Additionally, I took on board some additional server-side validation around the **service** field on the contact form, highlighted by AI. **[AI used]**
 
-I sourced new images for the new blocks and I am now working on design.
+I sourced new images for the new blocks and worked through the visual design.
 
 I added a [`/api/newsletter`](./landing_page/app/api/newsletter/route.ts) route to submit newsletter sign-ups through to the database.
+
+## Final product
+
+I have now completed the task objectives. The small full-stack application uses a content model for a landing page, serving the needs of the client outlined in the [brief](./Task%20Assets/Website_Breif.txt).
+
+I created a backend API using Next.js route handlers — pulling page content from JSON via [`/api/pages/[slug]`](./landing_page/app/api/pages/%5Bslug%5D/route.ts), with additional routes for form submissions ([`/api/leads`](./landing_page/app/api/leads/route.ts)) and newsletter sign-ups ([`/api/newsletter`](./landing_page/app/api/newsletter/route.ts)) as a nice-to-have.
+
+The frontend loads JSON from the API into an ordered section renderer ([`SectionRenderer`](./landing_page/components/SectionRenderer.tsx)), which displays blocks aligned with the brand and brief.
+
+Both the contact form and newsletter submissions have validation on the client and server side for security.
+
+Using my time effectively, I focused on the needs of the task first and utilised AI for documentation and speeding up design and templating processes. The final product can be found in [`landing_page`](./landing_page/) — see [setup instructions](./landing_page/README.md).
+
+I had some spare time (about 30 minutes) before hitting the 3 hour 30 minute mark, and used it to update the visuals — adding motions, animations, and branding shapes to bring the page to life. While the focus is on functionality, providing a site that does not meet a quality standard I hold myself to would not be right.
+
+## Trade-offs
+
+Page content is mocked with JSON rather than stored in MongoDB. This is explicitly allowed by the task and keeps content version-controlled and easy to extend — while lead and newsletter submissions use real database persistence. The API and data layer are structured so page content could be swapped to a CMS or database without changing the frontend.
+
+If I had more time within the task window, I would have added rate limiting on the form endpoints and additional security such as origin/domain validation so submissions could only come from the site itself. Minor, but something I would have done.
+
+## What I would improve with more time
+
+I would likely add a CMS. While WordPress is a go-to, for this type of stack I would suggest something like [Payload CMS](https://payloadcms.com/) — a full Next.js CMS that integrates well with the current structure. It can be set up as a headless or headless-serverless website using its local API, and offers strong capabilities in security, authentication, layout, and an easy-to-use format for clients or internal teams.
+
+I would also add rate limiting and origin checks on API routes, expand automated test coverage for validation and submission flows, and run a full accessibility audit across all blocks.
 
 ## Where AI was used
 

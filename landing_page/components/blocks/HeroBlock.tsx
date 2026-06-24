@@ -1,32 +1,30 @@
-"use client";
-
-import { handleAnchorClick } from "@/lib/scrollToSection";
+import { BrandBackgroundShapes } from "@/components/BrandBackgroundShapes";
+import { CtaButton } from "@/components/ui/CtaButton";
+import { HeroStats } from "@/components/motion/HeroStats";
+import { ParallaxLayer } from "@/components/motion/ParallaxLayer";
 import { resolveImageSrc, SECTION_IMAGES } from "@/lib/placeholderImage";
+import { eyebrowLabelOnDark } from "@/lib/brand";
 import type { HeroSection } from "@/lib/types";
+import { heroMinHeight, heroTextColumn, sectionGrid, sectionInsetLeft } from "@/lib/sectionLayout";
 
 type HeroBlockProps = Omit<HeroSection, "type">;
 
-type ActionLinkProps = {
-  label: string;
-  href?: string;
-  variant: "primary" | "secondary";
-};
-
-function ActionLink({ label, href, variant }: ActionLinkProps) {
-  const className =
-    variant === "primary"
-      ? "inline-flex items-center justify-center rounded bg-gold px-6 py-3 text-[13px] font-semibold tracking-wide text-navy transition-colors hover:bg-surface"
-      : "inline-flex items-center justify-center rounded border border-surface/35 px-6 py-3 text-[13px] font-medium text-surface transition-colors hover:border-gold hover:text-gold";
-
-  if (href) {
-    return (
-      <a href={href} className={className} onClick={(e) => handleAnchorClick(e, href)}>
-        {label}
-      </a>
-    );
-  }
-
-  return <span className={className}>{label}</span>;
+/** Highlight "NobleOak" in the headline with the brand gold */
+function HighlightedHeadline({ headline }: { headline: string }) {
+  const parts = headline.split(/(\bNobleOak\b)/);
+  return (
+    <>
+      {parts.map((part, i) =>
+        part === "NobleOak" ? (
+          <span key={i} className="text-gold">
+            {part}
+          </span>
+        ) : (
+          part
+        ),
+      )}
+    </>
+  );
 }
 
 export function HeroBlock({
@@ -38,72 +36,69 @@ export function HeroBlock({
   stats = [],
   image,
 }: HeroBlockProps) {
-  const imageSrc = resolveImageSrc(image?.src, SECTION_IMAGES.hero);
-
   return (
-    <section className="relative overflow-hidden bg-navy text-surface">
-      <div className="mx-auto grid max-w-7xl gap-10 px-8 py-14 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-16 lg:py-20">
-        <div className="order-2 flex flex-col gap-6 lg:order-1">
-          {eyebrow ? (
-            <p className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.2em] text-gold">
-              <span className="size-1.5 rounded-full bg-gold" aria-hidden="true" />
-              {eyebrow}
+    <section className="relative w-full overflow-hidden bg-navy text-surface">
+      <div className={`relative z-10 ${sectionGrid} ${heroMinHeight}`}>
+        {/* ── Text column ── */}
+        <div
+          className={`flex min-h-0 w-full flex-col justify-between border-r border-gold/20 bg-navy py-16 lg:pb-[80px] lg:pt-[160px] ${sectionInsetLeft} ${heroMinHeight}`}
+        >
+          <div className={`flex flex-col items-start gap-6 ${heroTextColumn}`}>
+            {eyebrow ? (
+              <div className="rule-ornament">
+                <p className={eyebrowLabelOnDark}>{eyebrow}</p>
+              </div>
+            ) : null}
+
+            <h1 className="w-full font-brand text-[2.75rem] font-semibold leading-[1.1] text-surface sm:text-5xl lg:text-[58px]">
+              <HighlightedHeadline headline={headline} />
+            </h1>
+
+            <p className="w-full text-lg leading-[1.6] text-surface/70 lg:text-xl">
+              {subheading}
             </p>
-          ) : null}
 
-          <h1 className="font-brand text-4xl font-semibold leading-tight sm:text-5xl lg:text-[3.25rem] lg:leading-[1.12]">
-            {headline}
-          </h1>
+            {primaryCta || secondaryCta ? (
+              <div className="mt-2 flex flex-wrap items-center gap-4">
+                {primaryCta ? <CtaButton cta={primaryCta} variant="primary" /> : null}
+                {secondaryCta ? (
+                  <CtaButton cta={secondaryCta} variant="secondaryOnDark" />
+                ) : null}
+              </div>
+            ) : null}
+          </div>
 
-          <p className="max-w-xl text-base leading-relaxed text-surface/75 lg:text-lg">
-            {subheading}
-          </p>
-
-          {primaryCta || secondaryCta ? (
-            <div className="flex flex-wrap items-center gap-3 pt-1">
-              {primaryCta ? (
-                <ActionLink
-                  label={primaryCta.label}
-                  href={primaryCta.href}
-                  variant="primary"
-                />
-              ) : null}
-              {secondaryCta ? (
-                <ActionLink
-                  label={secondaryCta.label}
-                  href={secondaryCta.href}
-                  variant="secondary"
-                />
-              ) : null}
-            </div>
-          ) : null}
-
+          {/* Stats with count-up animation */}
           {stats.length > 0 ? (
-            <dl className="mt-4 grid gap-6 border-t border-surface/15 pt-8 sm:grid-cols-3">
-              {stats.map((stat) => (
-                <div key={stat.label}>
-                  <dt className="font-brand text-2xl font-semibold text-gold sm:text-3xl">
-                    {stat.value}
-                  </dt>
-                  <dd className="mt-1 text-sm leading-snug text-surface/60">{stat.label}</dd>
-                </div>
-              ))}
-            </dl>
+            <div className={`mt-16 w-full lg:mt-0 ${heroTextColumn}`}>
+              <HeroStats stats={stats} mutedClassName="text-surface/65" />
+            </div>
           ) : null}
         </div>
 
-        <div className="order-1 lg:order-2">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl shadow-black/30 sm:aspect-[5/6] lg:aspect-[4/5]">
-            <img
-              src={imageSrc}
-              alt={image?.alt ?? "Lorem ipsum dolor sit amet"}
-              className="h-full w-full object-cover"
-            />
+        {/* ── Image column — framed with gold border + parallax ── */}
+        <div className={`relative min-h-[420px] w-full overflow-hidden ${heroMinHeight}`}>
+          {/* Thin gold inner-edge rule — echoes the left border of the text column */}
+          <div className="pointer-events-none absolute inset-0 z-20 border-l border-gold/20" />
+          {/* Corner bracket accents */}
+          <span className="pointer-events-none absolute left-4 top-4 z-20 h-8 w-8 border-l border-t border-gold/60" aria-hidden="true" />
+          <span className="pointer-events-none absolute right-4 top-4 z-20 h-8 w-8 border-r border-t border-gold/60" aria-hidden="true" />
+          <span className="pointer-events-none absolute bottom-4 left-4 z-20 h-8 w-8 border-b border-l border-gold/60" aria-hidden="true" />
+          <span className="pointer-events-none absolute bottom-4 right-4 z-20 h-8 w-8 border-b border-r border-gold/60" aria-hidden="true" />
+
+          <ParallaxLayer strength={0.28} className="absolute inset-0 z-0">
             <div
-              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-transparent"
+              className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-tl from-navy/40 via-transparent to-gold/10"
               aria-hidden="true"
             />
-          </div>
+            <img
+              src={resolveImageSrc(image?.src, SECTION_IMAGES.hero)}
+              alt={image?.alt ?? "Hero image"}
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </ParallaxLayer>
+
+          <BrandBackgroundShapes letter="O" corner="bottom-right" scope="column" />
         </div>
       </div>
     </section>

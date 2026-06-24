@@ -1,51 +1,86 @@
-"use client";
-
-import { handleAnchorClick } from "@/lib/scrollToSection";
+import { CtaButton } from "@/components/ui/CtaButton";
+import { Reveal } from "@/components/motion/Reveal";
 import { resolveImageSrc, SECTION_IMAGES } from "@/lib/placeholderImage";
-import type { CaseStudiesSection, CaseStudyItem } from "@/lib/types";
+import { bodyMuted, eyebrowLabel } from "@/lib/brand";
+import type { CaseStudyItem, CaseStudiesSection, HeroCta } from "@/lib/types";
+import { sectionInsetX } from "@/lib/sectionLayout";
 
 type CaseStudiesBlockProps = Omit<CaseStudiesSection, "type">;
+
+const CASE_STUDY_FALLBACKS = [
+  SECTION_IMAGES.caseStudySuccession,
+  SECTION_IMAGES.caseStudyExit,
+] as const;
+
+function ArrowIcon() {
+  return (
+    <svg
+      viewBox="0 0 20 20"
+      fill="none"
+      className="size-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-1"
+      aria-hidden="true"
+    >
+      <path
+        d="M4 10h12M11 5l5 5-5 5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function DarkLink({ link }: { link: HeroCta }) {
+  const cls = "group link-draw inline-flex items-center gap-2 font-sans text-[12px] font-medium leading-none tracking-[0.5px] text-gold transition-colors duration-300 hover:text-surface";
+  const content = (
+    <>
+      {link.label}
+      <ArrowIcon />
+    </>
+  );
+
+  if (link.href) {
+    return <a className={cls} href={link.href}>{content}</a>;
+  }
+  return <span className={cls}>{content}</span>;
+}
 
 function CaseStudyCard({
   title,
   description,
   link,
   image,
-  fallbackImage,
-}: CaseStudyItem & { fallbackImage: string }) {
-  const imageSrc = resolveImageSrc(image?.src, fallbackImage);
-
+  fallback,
+}: CaseStudyItem & { fallback: string }) {
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-lg border border-navy/10 bg-navy text-surface shadow-sm">
-      <div className="relative h-48 overflow-hidden">
-        <img
-          src={imageSrc}
-          alt={title}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/70 to-navy/20" />
+    <article className="group relative flex min-h-[380px] w-full flex-col justify-between overflow-hidden border border-gold/20 bg-navy p-10 lg:p-14">
+      {/* Background image with zoom on hover */}
+      <img
+        src={resolveImageSrc(image?.src, fallback)}
+        alt=""
+        className="card-img absolute inset-0 h-full w-full object-cover opacity-20"
+        aria-hidden="true"
+      />
+      <div className="absolute inset-0 bg-gradient-to-br from-navy/95 via-navy/85 to-forest/80" aria-hidden="true" />
+
+      {/* Corner accents */}
+      <span className="pointer-events-none absolute left-3 top-3 z-10 h-6 w-6 border-l border-t border-gold/40" aria-hidden="true" />
+      <span className="pointer-events-none absolute right-3 top-3 z-10 h-6 w-6 border-r border-t border-gold/40" aria-hidden="true" />
+
+      <div className="relative flex w-full flex-col gap-4 z-10">
+        <div className="gold-bar" aria-hidden="true" />
+        <h3 className="font-brand text-2xl font-semibold leading-[1.2] text-surface lg:text-[28px]">
+          {title}
+        </h3>
+        <p className="text-base leading-[1.6] text-surface/65">{description}</p>
       </div>
 
-      <div className="flex flex-1 flex-col p-6 lg:p-8">
-        <h3 className="font-brand text-xl font-semibold leading-snug">{title}</h3>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-surface/75 lg:text-base">
-          {description}
-        </p>
-
-        {link ? (
-          link.href ? (
-            <a
-              href={link.href}
-              className="mt-6 inline-flex text-sm font-medium text-gold transition-colors hover:text-surface"
-              onClick={(e) => handleAnchorClick(e, link.href)}
-            >
-              {link.label} →
-            </a>
-          ) : (
-            <span className="mt-6 text-sm font-medium text-gold">{link.label}</span>
-          )
-        ) : null}
-      </div>
+      {link ? (
+        <div className="relative z-10 mt-8">
+          <DarkLink link={link} />
+        </div>
+      ) : null}
     </article>
   );
 }
@@ -57,63 +92,44 @@ export function CaseStudiesBlock({
   footerText,
   seeAllLink,
 }: CaseStudiesBlockProps) {
-  const caseStudyFallbacks = [
-    SECTION_IMAGES.caseStudySuccession,
-    SECTION_IMAGES.caseStudyExit,
-  ];
-
   return (
-    <section id="case-studies" className="bg-white py-16 text-navy lg:py-24">
-      <div className="mx-auto max-w-7xl px-8 lg:px-16">
-        <div className="max-w-2xl">
+    <section id="case-studies" className="relative w-full overflow-hidden bg-white text-navy">
+      <div className={`relative z-10 ${sectionInsetX} py-16 lg:pb-[120px] lg:pt-[120px]`}>
+        <div className="flex w-full flex-col items-start gap-5">
           {eyebrow ? (
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-forest">
-              {eyebrow}
-            </p>
+            <>
+              <div className="gold-bar" aria-hidden="true" />
+              <p className={eyebrowLabel}>{eyebrow}</p>
+            </>
           ) : null}
-
           {title ? (
-            <h2 className="mt-3 font-brand text-3xl font-semibold leading-tight sm:text-4xl">
+            <h2 className="mt-1 w-full font-brand text-3xl font-semibold leading-[1.15] text-navy sm:text-4xl lg:text-[40px]">
               {title}
             </h2>
           ) : null}
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:mt-14">
-          {items.map((item, index) => (
-            <CaseStudyCard
-              key={item.title}
-              {...item}
-              fallbackImage={
-                caseStudyFallbacks[index] ?? SECTION_IMAGES.caseStudySuccession
-              }
-            />
+        <div className="mt-10 grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:mt-12">
+          {items.map((item, i) => (
+            <Reveal key={item.title} delay={i * 120}>
+              <CaseStudyCard
+                {...item}
+                fallback={CASE_STUDY_FALLBACKS[i] ?? SECTION_IMAGES.caseStudySuccession}
+              />
+            </Reveal>
           ))}
         </div>
 
         {footerText || seeAllLink ? (
-          <div className="mt-12 flex flex-col gap-4 lg:mt-14 lg:flex-row lg:items-center lg:justify-between">
+          <div className="mt-12 flex w-full flex-col gap-6 lg:mt-16 lg:flex-row lg:items-center lg:justify-between">
             {footerText ? (
-              <p className="max-w-2xl text-base leading-relaxed text-charcoal/75">
+              <p className={`w-full text-xl font-medium leading-[1.6] lg:flex-1 ${bodyMuted}`}>
                 {footerText}
               </p>
-            ) : null}
-
-            {seeAllLink ? (
-              seeAllLink.href ? (
-                <a
-                  href={seeAllLink.href}
-                  className="inline-flex w-fit items-center justify-center rounded bg-navy px-6 py-3 text-[13px] font-semibold tracking-wide text-surface transition-colors hover:bg-forest"
-                  onClick={(e) => handleAnchorClick(e, seeAllLink.href)}
-                >
-                  {seeAllLink.label}
-                </a>
-              ) : (
-                <span className="inline-flex w-fit rounded bg-navy px-6 py-3 text-[13px] font-semibold text-surface">
-                  {seeAllLink.label}
-                </span>
-              )
-            ) : null}
+            ) : (
+              <div />
+            )}
+            {seeAllLink ? <CtaButton cta={seeAllLink} variant="primary" /> : null}
           </div>
         ) : null}
       </div>

@@ -1,14 +1,32 @@
-"use client";
-
-import { handleAnchorClick } from "@/lib/scrollToSection";
-import {
-  resolveImageSrc,
-  SECTION_IMAGES,
-  SOCIAL_PROOF_LOGOS,
-} from "@/lib/placeholderImage";
+import { BrandBackgroundShapes } from "@/components/BrandBackgroundShapes";
+import { CtaButton } from "@/components/ui/CtaButton";
+import { ParallaxLayer } from "@/components/motion/ParallaxLayer";
+import { bodyMuted, eyebrowLabel } from "@/lib/brand";
+import { resolveImageSrc, SECTION_IMAGES, SOCIAL_PROOF_LOGOS } from "@/lib/placeholderImage";
 import type { WhyUsSection } from "@/lib/types";
+import {
+  sectionGrid,
+  sectionInsetLeft,
+  splitPanelMinHeight,
+} from "@/lib/sectionLayout";
 
 type WhyUsBlockProps = Omit<WhyUsSection, "type">;
+
+function TrustLogoStrip({ logos }: { logos: readonly string[] }) {
+  return (
+    <div className="flex flex-wrap items-center gap-5">
+      {logos.map((src) => (
+        <img
+          key={src}
+          src={src}
+          alt=""
+          aria-hidden="true"
+          className="h-6 w-auto max-w-[90px] object-contain opacity-40"
+        />
+      ))}
+    </div>
+  );
+}
 
 export function WhyUsBlock({
   eyebrow,
@@ -18,96 +36,82 @@ export function WhyUsBlock({
   socialProof,
   image,
 }: WhyUsBlockProps) {
-  const imageSrc = resolveImageSrc(image?.src, SECTION_IMAGES.whyUs);
-  const socialProofLogos = socialProof?.logos?.length
-    ? socialProof.logos
-    : SOCIAL_PROOF_LOGOS;
+  const trustLogos = socialProof?.logos ?? SOCIAL_PROOF_LOGOS;
 
   return (
-    <section id="why-us" className="bg-white py-16 text-navy lg:py-24">
-      <div className="mx-auto max-w-7xl px-8 lg:px-16">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-start lg:gap-16">
-          <div className="flex flex-col gap-8">
-            <div className="flex flex-col gap-3">
-              {eyebrow ? (
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-forest">
-                  {eyebrow}
-                </p>
-              ) : null}
-
-              <h2 className="font-brand text-3xl font-semibold leading-tight sm:text-4xl">
-                {title}
-              </h2>
-            </div>
-
-            {items.length > 0 ? (
-              <ul className="flex flex-col gap-6">
-                {items.map((item) => (
-                  <li
-                    key={item.number}
-                    className="border-l-2 border-gold/40 pl-4"
-                  >
-                    <div className="flex items-baseline gap-3">
-                      <span className="font-brand text-sm font-semibold text-gold">
-                        {item.number}
-                      </span>
-                      <h3 className="font-brand text-lg font-semibold text-navy">
-                        {item.title}
-                      </h3>
-                    </div>
-                    <p className="mt-2 text-base leading-relaxed text-charcoal/75">
-                      {item.description}
-                    </p>
-                  </li>
-                ))}
-              </ul>
+    <section id="why-us" className="relative w-full overflow-hidden bg-white text-navy">
+      <div className={`relative z-10 ${sectionGrid} items-stretch ${splitPanelMinHeight}`}>
+        {/* ── Left column ── */}
+        <div
+          className={`flex w-full flex-col justify-between py-16 lg:py-[120px] ${sectionInsetLeft} ${splitPanelMinHeight}`}
+        >
+          <div className="flex w-full flex-col gap-5">
+            {eyebrow ? (
+              <>
+                <div className="gold-bar" aria-hidden="true" />
+                <p className={eyebrowLabel}>{eyebrow}</p>
+              </>
             ) : null}
 
-            {cta || socialProof ? (
-              <div className="flex flex-col gap-4">
-                {cta ? (
-                  cta.href ? (
-                    <a
-                      href={cta.href}
-                      className="inline-flex w-fit items-center justify-center rounded bg-navy px-6 py-3 text-[13px] font-semibold tracking-wide text-surface transition-colors hover:bg-forest"
-                      onClick={(e) => handleAnchorClick(e, cta.href)}
-                    >
-                      {cta.label}
-                    </a>
-                  ) : (
-                    <span className="inline-flex w-fit rounded bg-navy px-6 py-3 text-[13px] font-semibold text-surface">
-                      {cta.label}
-                    </span>
-                  )
-                ) : null}
+            <h2 className="w-full font-brand text-3xl font-semibold leading-[1.15] sm:text-4xl lg:text-[40px]">
+              {title}
+            </h2>
+          </div>
 
-                {socialProof ? (
-                  <div className="flex flex-col gap-3">
-                    <div className="flex flex-wrap items-center gap-4">
-                      {socialProofLogos.map((logoSrc) => (
-                        <img
-                          key={logoSrc}
-                          src={resolveImageSrc(logoSrc)}
-                          alt=""
-                          className="h-6 w-auto max-w-[90px] object-contain opacity-50"
-                          aria-hidden="true"
-                        />
-                      ))}
-                    </div>
-                    <p className="text-sm text-forest">{socialProof.label}</p>
+          {items.length > 0 ? (
+            <ul className="mt-10 flex w-full flex-col gap-8 lg:mt-12">
+              {items.map((item) => (
+                <li
+                  key={item.number}
+                  className="flex w-full flex-col gap-2 border-l border-gold/40 pl-5"
+                >
+                  <div className="flex items-start gap-3 text-lg leading-[1.4]">
+                    <span className="shrink-0 font-brand text-base font-semibold text-gold">
+                      {item.number}
+                    </span>
+                    <span className="font-brand font-medium">{item.title}</span>
                   </div>
-                ) : null}
+                  <p className={`pl-8 text-base leading-[1.6] ${bodyMuted}`}>{item.description}</p>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+
+          <div className="mt-10 flex flex-col gap-6 lg:mt-12">
+            {cta ? <CtaButton cta={cta} variant="primary" /> : null}
+
+            {socialProof ? (
+              <div className="flex flex-col gap-3">
+                <TrustLogoStrip logos={trustLogos} />
+                <p className="text-sm leading-[1.4] text-forest">{socialProof.label}</p>
               </div>
             ) : null}
           </div>
+        </div>
 
-          <div className="overflow-hidden rounded-xl border border-navy/10 bg-surface shadow-lg shadow-navy/5">
-            <img
-              src={imageSrc}
-              alt={image?.alt ?? "Lorem ipsum dolor sit amet"}
-              className="aspect-[4/5] w-full object-cover sm:aspect-[5/6]"
+        {/* ── Right column: full-height image with parallax ── */}
+        <div
+          className={`relative min-h-[360px] w-full overflow-hidden border-l border-gold/15 bg-navy/5 ${splitPanelMinHeight}`}
+        >
+          {/* Corner accents */}
+          <span className="pointer-events-none absolute left-4 top-4 z-20 h-7 w-7 border-l border-t border-gold/50" aria-hidden="true" />
+          <span className="pointer-events-none absolute right-4 top-4 z-20 h-7 w-7 border-r border-t border-gold/50" aria-hidden="true" />
+          <span className="pointer-events-none absolute bottom-4 left-4 z-20 h-7 w-7 border-b border-l border-gold/50" aria-hidden="true" />
+          <span className="pointer-events-none absolute bottom-4 right-4 z-20 h-7 w-7 border-b border-r border-gold/50" aria-hidden="true" />
+
+          <ParallaxLayer strength={0.25} className="absolute inset-0 z-0">
+            <div
+              className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-navy/30 to-transparent"
+              aria-hidden="true"
             />
-          </div>
+            <img
+              src={resolveImageSrc(image?.src, SECTION_IMAGES.whyUs)}
+              alt={image?.alt ?? "Why choose us"}
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </ParallaxLayer>
+
+          <BrandBackgroundShapes letter="O" corner="bottom-right" scope="column" />
         </div>
       </div>
     </section>

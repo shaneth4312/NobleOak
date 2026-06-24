@@ -1,41 +1,58 @@
-"use client";
-
-import { handleAnchorClick } from "@/lib/scrollToSection";
+import { CtaButton } from "@/components/ui/CtaButton";
+import { Reveal } from "@/components/motion/Reveal";
+import { bodyMuted, eyebrowLabel } from "@/lib/brand";
 import type { ServiceItem, ServicesSection } from "@/lib/types";
+import { sectionInsetX } from "@/lib/sectionLayout";
 
 type ServicesBlockProps = Omit<ServicesSection, "type">;
 
-function ServiceCard({
-  index,
-  title,
-  description,
-  link,
-}: ServiceItem & { index: number }) {
+function ArrowIcon() {
   return (
-    <article className="group flex h-full flex-col rounded-lg border border-navy/10 bg-surface p-6 shadow-sm transition-shadow hover:shadow-md lg:p-8">
-      <span className="font-brand text-sm font-semibold text-gold">
-        {String(index + 1).padStart(2, "0")}
-      </span>
+    <svg
+      viewBox="0 0 20 20"
+      fill="none"
+      className="size-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-1"
+      aria-hidden="true"
+    >
+      <path
+        d="M4 10h12M11 5l5 5-5 5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
-      <h3 className="mt-4 font-brand text-xl font-semibold leading-snug text-navy">
-        {title}
-      </h3>
+function ServiceCard({ title, description, link }: ServiceItem) {
+  return (
+    <article className="group relative flex min-h-[320px] w-full flex-col justify-between overflow-hidden border border-navy/10 bg-white p-10 transition-colors duration-300 hover:border-gold/60">
+      {/* Thin gold rule — top accent */}
+      <div className="absolute left-0 top-0 h-px w-0 bg-gold transition-all duration-500 group-hover:w-full" aria-hidden="true" />
 
-      <p className="mt-3 flex-1 text-sm leading-relaxed text-charcoal/75 lg:text-base">
-        {description}
-      </p>
+      <div className="flex flex-col gap-4">
+        {/* Corner ornament */}
+        <span className="mb-2 inline-block h-px w-10 bg-gold/60" aria-hidden="true" />
+        <h3 className="font-brand text-[1.375rem] font-semibold leading-[1.2] text-navy">
+          {title}
+        </h3>
+        <p className={`text-base leading-[1.6] ${bodyMuted}`}>{description}</p>
+      </div>
 
       {link ? (
         link.href ? (
           <a
+            className="group mt-8 inline-flex items-center gap-2 font-sans text-[12px] font-medium leading-none tracking-[0.5px] text-navy transition-colors duration-300 hover:text-gold"
             href={link.href}
-            className="mt-6 inline-flex text-sm font-medium text-forest transition-colors hover:text-gold"
-            onClick={(e) => handleAnchorClick(e, link.href)}
           >
             {link.label}
+            <ArrowIcon />
           </a>
         ) : (
-          <span className="mt-6 text-sm font-medium text-forest">{link.label}</span>
+          <span className="mt-8 inline-flex items-center gap-2 font-sans text-[12px] font-medium leading-none tracking-[0.5px] text-navy">
+            {link.label}
+          </span>
         )
       ) : null}
     </article>
@@ -50,56 +67,36 @@ export function ServicesBlock({
   items,
 }: ServicesBlockProps) {
   return (
-    <section id="services" className="bg-white py-16 text-navy lg:py-24">
-      <div className="mx-auto max-w-7xl px-8 lg:px-16">
-        <div className="flex max-w-2xl flex-col gap-3">
+    <section id="services" className="relative w-full overflow-hidden bg-surface text-navy">
+      <div className={`relative z-10 ${sectionInsetX} py-16 lg:pb-[120px] lg:pt-[120px]`}>
+        {/* Section header — "—— EYEBROW ——" + heading */}
+        <div className="flex w-full flex-col items-center gap-5 text-center">
           {eyebrow ? (
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold">
-              {eyebrow}
-            </p>
+            <div className="rule-ornament w-full max-w-sm">
+              <p className={eyebrowLabel}>{eyebrow}</p>
+            </div>
           ) : null}
 
-          <h2 className="font-brand text-3xl font-semibold leading-tight sm:text-4xl">
+          <h2 className="w-full max-w-3xl font-brand text-3xl font-semibold leading-[1.15] sm:text-4xl lg:text-[44px]">
             {title}
           </h2>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3 lg:gap-6">
-          {items.map((item, index) => (
-            <ServiceCard key={item.title} index={index} {...item} />
+        {/* Staggered cards */}
+        <div className="mt-14 grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:mt-16">
+          {items.map((item, i) => (
+            <Reveal key={item.title} delay={i * 100}>
+              <ServiceCard {...item} />
+            </Reveal>
           ))}
         </div>
 
+        {/* Lead-gen CTA */}
         {cta || seeAllLink ? (
-          <div className="mt-12 flex flex-wrap items-center gap-4 lg:mt-14">
-            {cta ? (
-              cta.href ? (
-                <a
-                  href={cta.href}
-                  className="inline-flex items-center justify-center rounded bg-navy px-6 py-3 text-[13px] font-semibold tracking-wide text-surface transition-colors hover:bg-forest"
-                  onClick={(e) => handleAnchorClick(e, cta.href)}
-                >
-                  {cta.label}
-                </a>
-              ) : (
-                <span className="inline-flex rounded bg-navy px-6 py-3 text-[13px] font-semibold text-surface">
-                  {cta.label}
-                </span>
-              )
-            ) : null}
-
+          <div className="mt-14 flex w-full flex-col items-center gap-5 lg:mt-16">
+            {cta ? <CtaButton cta={cta} variant="primary" /> : null}
             {seeAllLink ? (
-              seeAllLink.href ? (
-                <a
-                  href={seeAllLink.href}
-                  className="text-sm font-medium text-charcoal/70 underline-offset-4 transition-colors hover:text-navy hover:underline"
-                  onClick={(e) => handleAnchorClick(e, seeAllLink.href)}
-                >
-                  {seeAllLink.label}
-                </a>
-              ) : (
-                <span className="text-sm font-medium text-charcoal/70">{seeAllLink.label}</span>
-              )
+              <CtaButton cta={seeAllLink} variant="link" />
             ) : null}
           </div>
         ) : null}

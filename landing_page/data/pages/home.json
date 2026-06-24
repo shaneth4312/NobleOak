@@ -6,167 +6,161 @@
       "id": "sec_0",
       "type": "header",
       "navLinks": [
-        { "label": "Lorem", "href": "#about" },
-        { "label": "Ipsum", "href": "#services" },
-        { "label": "Dolor", "href": "#why-us" },
-        { "label": "Sit", "href": "#testimonials" },
-        { "label": "Amet", "href": "#contact" }
+        { "label": "About", "href": "#about" },
+        { "label": "Services", "href": "#services" },
+        { "label": "Why Us", "href": "#why-us" },
+        { "label": "Testimonials", "href": "#testimonials" },
+        { "label": "Contact", "href": "#contact" }
       ],
       "cta": {
-        "label": "Consectetur Elit",
+        "label": "Book a Consultation",
         "href": "#contact"
       }
     },
     {
       "id": "sec_1",
       "type": "hero",
-      "eyebrow": "Lorem · Ipsum · Dolor",
-      "headline": "Lorem ipsum dolor sit amet, consectetur adipiscing.",
-      "subheading": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.",
+      "eyebrow": "Wealth · Tax · Succession Advisory",
+      "headline": "Preserve what you have built. Plan what comes next.",
+      "subheading": "NobleOak Partners provides integrated wealth, tax and succession advice for affluent individuals, families and business owners. Discreet, personal and structured for the long term.",
       "primaryCta": {
-        "label": "Lorem Ipsum",
+        "label": "Book a Consultation",
         "href": "#contact"
       },
       "secondaryCta": {
-        "label": "Dolor Sit Amet  +000 000 0000",
-        "href": "tel:+0000000000"
+        "label": "Speak to an Adviser  +123 456 7891",
+        "href": "tel:+1234567891"
       },
       "stats": [
         {
-          "value": "100+",
-          "label": "Lorem ipsum dolor sit amet"
+          "value": "£1.2bn+",
+          "label": "Assets under advisory"
         },
         {
-          "value": "99%",
-          "label": "Consectetur adipiscing elit sed"
+          "value": "94%",
+          "label": "Client retention over five years"
         },
         {
-          "value": "20+",
-          "label": "Do eiusmod tempor incididunt"
+          "value": "25+",
+          "label": "Years of combined experience"
         }
       ],
       "image": {
         "src": "/images/sections/Hero.jpg",
-        "alt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "alt": "The reading room of a grand London library, representing long-term wisdom and heritage"
       }
     },
     {
       "id": "sec_2",
       "type": "about",
-      "eyebrow": "Lorem Ipsum",
-      "title": "Dolor sit amet consectetur adipiscing elit",
-      "introPrimary": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
-      "introSecondary": "Nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "eyebrow": "About NobleOak",
+      "title": "A trusted partner for complex financial lives",
+      "introPrimary": "Wealth is rarely just about investments. It is about family, business, tax, timing and the conversations that are difficult to start. NobleOak Partners was founded to bring clarity to those decisions — with advice that is as considered as it is personal.",
+      "introSecondary": "We work with individuals, families and business owners who need more than standard financial planning. Our advisers integrate investment management, tax structuring and succession planning into one coherent strategy.",
       "features": [
-        { "label": "Excepteur sint occaecat cupidatat non proident" },
-        { "label": "Sunt in culpa qui officia deserunt mollit" },
-        { "label": "Anim id est laborum sed ut perspiciatis" }
+        { "label": "Integrated wealth and tax advice" },
+        { "label": "Discreet, partner-led relationships" },
+        { "label": "Planning across generations" }
       ],
-      "closingText": "Unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore.",
+      "closingText": "Whether you are preparing for retirement, structuring family wealth or planning a business exit, we help you move forward with confidence — and with a plan that reflects what matters most to you.",
       "link": {
-        "label": "Veniam quis nostrud",
+        "label": "Explore our services",
         "href": "#services"
       },
       "image": {
         "src": "/images/sections/About.jpg",
-        "alt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "alt": "A financial adviser in a private consultation with a client"
       }
     },
     {
       "id": "sec_3",
       "type": "services",
-      "eyebrow": "Lorem Services",
-      "title": "Consectetur adipiscing elit sed do eiusmod",
+      "eyebrow": "Our Services",
+      "title": "Advice shaped around your circumstances",
       "seeAllLink": {
-        "label": "Tempor incididunt ut labore",
+        "label": "See All Services",
         "href": "#services"
       },
       "cta": {
-        "label": "Magna Aliqua",
+        "label": "Book a Consultation",
         "href": "#contact"
       },
       "items": [
         {
-          "title": "Lorem Ipsum Dolor",
-          "description": "Sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-          "link": { "label": "Ut enim", "href": "#contact" }
+          "title": "Wealth Management",
+          "description": "Disciplined investment management and financial planning designed to preserve and grow wealth in line with your goals, time horizon and tolerance for risk.",
+          "link": { "label": "Learn More", "href": "#contact" }
         },
         {
-          "title": "Consectetur Adipiscing",
-          "description": "Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-          "link": { "label": "Minim veniam", "href": "#contact" }
+          "title": "Tax Planning",
+          "description": "Thoughtful structuring of investments, income and assets to improve tax efficiency — integrated with your wider financial plan, not treated in isolation.",
+          "link": { "label": "Learn More", "href": "#contact" }
         },
         {
-          "title": "Elit Sed Do",
-          "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-          "link": { "label": "Duis aute", "href": "#contact" }
+          "title": "Succession Advisory",
+          "description": "Clear planning for the transfer of wealth, property and business interests between generations, with attention to family dynamics and long-term intent.",
+          "link": { "label": "Learn More", "href": "#contact" }
         },
         {
-          "title": "Eiusmod Tempor",
-          "description": "Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "link": { "label": "Excepteur sint", "href": "#contact" }
+          "title": "Family Office Support",
+          "description": "Coordinated advisory for families with significant assets — aligning investments, governance, trusts and professional advisers behind a single strategy.",
+          "link": { "label": "Learn More", "href": "#contact" }
         },
         {
-          "title": "Incididunt Labore",
-          "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem.",
-          "link": { "label": "Perspiciatis unde", "href": "#contact" }
+          "title": "Business Exit Planning",
+          "description": "Support for business owners preparing for sale, succession or transition — aligning corporate outcomes with personal wealth objectives.",
+          "link": { "label": "Learn More", "href": "#contact" }
         }
       ]
     },
     {
       "id": "sec_4",
       "type": "whyUs",
-      "eyebrow": "Lorem Ipsum",
-      "title": "Dolor sit amet consectetur adipiscing elit sed",
+      "eyebrow": "Why NobleOak",
+      "title": "The clarity and discretion affluent clients expect",
       "items": [
         {
           "number": "01",
-          "title": "Lorem ipsum dolor",
-          "description": "Sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          "title": "Integrated expertise",
+          "description": "Investment, tax and succession advice under one roof. Fewer handoffs, fewer gaps, and a strategy that holds together as your life evolves."
         },
         {
           "number": "02",
-          "title": "Consectetur adipiscing",
-          "description": "Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          "title": "Partner-led relationships",
+          "description": "You work with experienced advisers who know your circumstances — not a rotating cast of junior contacts. Continuity matters when decisions span decades."
         },
         {
           "number": "03",
-          "title": "Elit sed do eiusmod",
-          "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+          "title": "Built for complexity",
+          "description": "From family trusts and business interests to international assets and intergenerational planning, we are structured for clients whose finances do not fit a template."
         }
       ],
       "cta": {
-        "label": "Tempor Incididunt",
+        "label": "Start a conversation",
         "href": "#contact"
       },
       "socialProof": {
         "avatarCount": 3,
-        "label": "Ut labore et dolore magna aliqua enim ad minim",
-        "logos": [
-          "/images/logos/logoipsum-334.png",
-          "/images/logos/logoipsum-358.png",
-          "/images/logos/logoipsum-391.png",
-          "/images/logos/logoipsum-410.png"
-        ]
+        "label": "Trusted by families and business owners worldwide"
       },
       "image": {
         "src": "/images/sections/Whyus.jpg",
-        "alt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "alt": "A senior business executive in a private office setting"
       }
     },
     {
-      "id": "sec_5",
+      "id": "sec_9",
       "type": "cta",
-      "badge": "Lorem ipsum dolor",
-      "title": "Sit amet consectetur adipiscing elit",
-      "description": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco.",
+      "badge": "Begin with a conversation",
+      "title": "Thoughtful advice starts with understanding you",
+      "description": "Whether you are planning for the future, responding to a life event or seeking a second opinion on existing arrangements, our advisers are ready to listen.",
       "primaryCta": {
-        "label": "Ut Labore",
+        "label": "Book a Consultation",
         "href": "#contact"
       },
       "secondaryCta": {
-        "label": "Dolore Magna  +000 000 0000",
-        "href": "tel:+0000000000"
+        "label": "Call us  +123 456 7891",
+        "href": "tel:+1234567891"
       },
       "image": {
         "src": "/images/sections/cta-1.jpg",
@@ -176,130 +170,128 @@
     {
       "id": "sec_6",
       "type": "logoPartners",
-      "title": "Lorem ipsum dolor sit amet consectetur",
       "partners": [
-        { "name": "Lorem Ipsum 1", "src": "/images/logos/logoipsum-334.png", "width": 120, "height": 36 },
-        { "name": "Lorem Ipsum 2", "src": "/images/logos/logoipsum-358.png", "width": 140, "height": 36 },
-        { "name": "Lorem Ipsum 3", "src": "/images/logos/logoipsum-378.png", "width": 160, "height": 36 },
-        { "name": "Lorem Ipsum 4", "src": "/images/logos/logoipsum-391.png", "width": 120, "height": 36 },
-        { "name": "Lorem Ipsum 5", "src": "/images/logos/logoipsum-404.png", "width": 130, "height": 36 },
-        { "name": "Lorem Ipsum 6", "src": "/images/logos/logoipsum-410.png", "width": 120, "height": 36 },
-        { "name": "Lorem Ipsum 7", "src": "/images/logos/logoipsum-416.png", "width": 120, "height": 36 },
-        { "name": "Lorem Ipsum 8", "src": "/images/logos/logoipsum-428.png", "width": 100, "height": 36 }
+        { "name": "Partner 1", "src": "/images/logos/logoipsum-334.png", "width": 120, "height": 36 },
+        { "name": "Partner 2", "src": "/images/logos/logoipsum-358.png", "width": 140, "height": 36 },
+        { "name": "Partner 3", "src": "/images/logos/logoipsum-378.png", "width": 160, "height": 36 },
+        { "name": "Partner 4", "src": "/images/logos/logoipsum-391.png", "width": 120, "height": 36 },
+        { "name": "Partner 5", "src": "/images/logos/logoipsum-404.png", "width": 130, "height": 36 },
+        { "name": "Partner 6", "src": "/images/logos/logoipsum-410.png", "width": 120, "height": 36 },
+        { "name": "Partner 7", "src": "/images/logos/logoipsum-416.png", "width": 120, "height": 36 },
+        { "name": "Partner 8", "src": "/images/logos/logoipsum-428.png", "width": 100, "height": 36 }
       ]
     },
     {
       "id": "sec_7",
       "type": "testimonials",
-      "eyebrow": "Lorem Testimonials",
-      "title": "Dolor sit amet consectetur adipiscing",
+      "eyebrow": "Testimonials",
+      "title": "What our clients say",
       "testimonials": [
         {
-          "quote": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-          "authorName": "Lorem Ipsum",
-          "authorRole": "Dolor sit amet",
+          "quote": "NobleOak helped us reorganise investments and inheritance plans in a way that finally made sense for the whole family. The advice was thorough, clear and never rushed.",
+          "authorName": "James Harrington",
+          "authorRole": "Retired Company Director",
           "rating": 5,
           "avatar": "/images/testimonials/pexels-kampus-8171180.jpg"
         },
         {
-          "quote": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-          "authorName": "Consectetur Elit",
-          "authorRole": "Sed do eiusmod",
+          "quote": "As we prepared for a partial exit, NobleOak aligned the transaction with our personal financial plan. We felt supported at every stage — commercially and personally.",
+          "authorName": "Catherine Moore",
+          "authorRole": "Founder, Moore Engineering Group",
           "rating": 5,
           "avatar": "/images/testimonials/pexels-sharon-snider-2339082-4000308.jpg"
         },
         {
-          "quote": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-          "authorName": "Tempor Incididunt",
-          "authorRole": "Ut labore et dolore",
+          "quote": "They understood that our priorities were not only returns, but governance, succession and keeping the family aligned. That level of care is rare.",
+          "authorName": "The Ashford Family",
+          "authorRole": "Multi-generational private clients",
           "rating": 5,
           "avatar": "/images/testimonials/pexels-gustavo-fring-4975756.jpg"
         }
       ],
       "seeAllLink": {
-        "label": "Magna aliqua",
+        "label": "See All Testimonials",
         "href": "#testimonials"
       },
       "image": {
         "src": "/images/sections/test-2.jpg",
-        "alt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "alt": "A financial adviser reviewing documents with clients in a private meeting"
       }
     },
     {
       "id": "sec_8",
       "type": "caseStudies",
-      "eyebrow": "Lorem Stories",
-      "title": "Consectetur adipiscing elit sed do",
+      "eyebrow": "Client Stories",
       "items": [
         {
-          "title": "Lorem ipsum dolor sit",
-          "description": "Amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim.",
-          "link": { "label": "Veniam quis nostrud", "href": "#case-studies" },
+          "title": "Structuring wealth for the next generation",
+          "description": "How we helped a business-owning family reorganise holdings, reduce inheritance tax exposure and establish a governance framework for the next generation.",
+          "link": { "label": "Read Full Case Study", "href": "#case-studies" },
           "image": { "src": "/images/sections/case-study-succession.jpg" }
         },
         {
-          "title": "Exercitation ullamco laboris",
-          "description": "Nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.",
-          "link": { "label": "Excepteur sint occaecat", "href": "#case-studies" },
+          "title": "Planning a business exit",
+          "description": "Supporting a founder through sale preparation, tax-efficient extraction of value and long-term investment of proceeds.",
+          "link": { "label": "Read Full Case Study", "href": "#case-studies" },
           "image": { "src": "/images/sections/case-study-exit.jpg" }
         }
       ],
-      "footerText": "Sunt in culpa qui officia deserunt mollit anim id est laborum sed ut perspiciatis unde omnis iste natus error.",
+      "footerText": "Every client situation is different. These examples illustrate the kind of complex planning we undertake — shared with permission and details anonymised.",
       "seeAllLink": {
-        "label": "Perspiciatis Unde",
+        "label": "See All Case Studies",
         "href": "#case-studies"
       }
     },
     {
-      "id": "sec_9",
+      "id": "sec_5",
       "type": "contactForm",
-      "eyebrow": "Lorem Ipsum",
-      "title": "Dolor sit amet consectetur adipiscing",
-      "description": "Elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.",
-      "phone": "+000 000 0000",
-      "submitLabel": "Ut Labore Et Dolore",
+      "eyebrow": "Consultation",
+      "title": "Arrange a confidential conversation",
+      "description": "There is no obligation. Initial conversations are confidential and tailored to your circumstances.",
+      "phone": "+123 456 789 100",
+      "submitLabel": "Request a consultation",
       "serviceOptions": [
-        "Lorem ipsum dolor",
-        "Sit amet consectetur",
-        "Adipiscing elit sed",
-        "Do eiusmod tempor",
-        "Incididunt ut labore"
+        "Wealth Management",
+        "Tax Planning",
+        "Succession Advisory",
+        "Family Office Support",
+        "Business Exit Planning"
       ]
     },
     {
       "id": "sec_10",
       "type": "footer",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "phone": "+000 000 0000",
-      "email": "lorem@ipsum.dolor",
+      "description": "NobleOak Partners is a global financial consultancy specialising in wealth management, tax planning and succession advisory for affluent individuals, families and business owners.",
+      "phone": "+123 456 789 100",
+      "email": "hello@nobleoakpartners.com",
       "linkGroups": [
         {
-          "title": "Lorem",
+          "title": "Navigation",
           "links": [
-            { "label": "Ipsum", "href": "#" },
-            { "label": "Dolor", "href": "#about" },
-            { "label": "Sit", "href": "#services" },
-            { "label": "Amet", "href": "#contact" }
+            { "label": "Home", "href": "#" },
+            { "label": "About", "href": "#" },
+            { "label": "Services", "href": "#services" },
+            { "label": "Contact", "href": "#contact" }
           ]
         },
         {
-          "title": "Consectetur",
+          "title": "Insights & Resources",
           "links": [
-            { "label": "Adipiscing elit" },
-            { "label": "Sed do eiusmod" },
-            { "label": "Tempor incididunt" },
-            { "label": "Ut labore" }
+            { "label": "Wealth Planning Guides" },
+            { "label": "Tax & Succession Insights" },
+            { "label": "Business Exit Resources" },
+            { "label": "Glossary" }
           ]
         }
       ],
       "newsletter": {
-        "title": "Magna aliqua",
-        "description": "Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip.",
-        "emailLabel": "Email",
+        "title": "Occasional insights, no noise",
+        "description": "Receive thoughtful commentary on wealth, tax and succession — written for clients and professional advisers.",
+        "emailLabel": "Your Email",
         "submitLabel": "Subscribe"
       },
-      "copyrightLeft": "Lorem Ipsum",
-      "copyrightRight": "Copyright © 2026. Dolor sit amet."
+      "copyrightLeft": "NobleOak Partners",
+      "copyrightRight": "Copyright © 2026. All rights reserved."
     }
   ]
 }

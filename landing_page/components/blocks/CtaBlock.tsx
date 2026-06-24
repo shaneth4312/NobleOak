@@ -1,37 +1,11 @@
-"use client";
-
-import { handleAnchorClick } from "@/lib/scrollToSection";
+import { BrandBackgroundShapes } from "@/components/BrandBackgroundShapes";
+import { CtaButton } from "@/components/ui/CtaButton";
 import { resolveImageSrc, SECTION_IMAGES } from "@/lib/placeholderImage";
+import { eyebrowLabelOnDark } from "@/lib/brand";
 import type { CtaSection } from "@/lib/types";
+import { sectionInsetX } from "@/lib/sectionLayout";
 
 type CtaBlockProps = Omit<CtaSection, "type">;
-
-type ActionLinkProps = {
-  label: string;
-  href?: string;
-  variant: "primary" | "secondary";
-};
-
-function ActionLink({ label, href, variant }: ActionLinkProps) {
-  const className =
-    variant === "primary"
-      ? "inline-flex items-center justify-center rounded bg-gold px-6 py-3 text-[13px] font-semibold tracking-wide text-navy transition-colors hover:bg-surface"
-      : "inline-flex items-center justify-center rounded border border-surface/30 px-6 py-3 text-[13px] font-medium text-surface transition-colors hover:border-gold hover:text-gold";
-
-  if (href) {
-    return (
-      <a
-        href={href}
-        className={className}
-        onClick={(e) => handleAnchorClick(e, href)}
-      >
-        {label}
-      </a>
-    );
-  }
-
-  return <span className={className}>{label}</span>;
-}
 
 export function CtaBlock({
   badge,
@@ -41,63 +15,58 @@ export function CtaBlock({
   secondaryCta,
   image,
 }: CtaBlockProps) {
-  const imageSrc = resolveImageSrc(image?.src, SECTION_IMAGES.cta);
-  const hideImageFromAssistiveTech = !image?.alt;
-
   return (
-    <section className="py-16 lg:py-20">
-      <div className="mx-auto max-w-7xl px-8 lg:px-16">
-        <div className="overflow-hidden rounded-2xl bg-navy text-surface shadow-xl shadow-navy/20 lg:grid lg:grid-cols-5">
-          <div className="relative min-h-[220px] lg:col-span-2 lg:min-h-full">
-            <img
-              src={imageSrc}
-              alt={image?.alt ?? ""}
-              className="absolute inset-0 h-full w-full object-cover"
-              aria-hidden={hideImageFromAssistiveTech}
-            />
-            <div
-              className="absolute inset-0 bg-navy/30 lg:bg-gradient-to-r lg:from-transparent lg:to-navy/80"
-              aria-hidden="true"
-            />
-          </div>
+    <section className="relative w-full overflow-hidden text-surface">
+      <img
+        src={resolveImageSrc(image?.src, SECTION_IMAGES.cta)}
+        alt={image?.alt ?? ""}
+        className="absolute inset-0 h-full w-full object-cover"
+        aria-hidden={!image?.alt}
+      />
+      <div
+        className="absolute inset-0 bg-gradient-to-br from-navy/96 via-navy/92 to-forest/88"
+        aria-hidden="true"
+      />
+      <BrandBackgroundShapes
+        letter="O"
+        corner="bottom-left"
+        scope="section"
+        side="left"
+        className="!z-[15]"
+      />
 
-          <div className="flex flex-col justify-center gap-5 p-8 lg:col-span-3 lg:p-12">
-            {badge ? (
-              <span className="inline-flex w-fit rounded-full border border-gold/40 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.15em] text-gold">
-                {badge}
-              </span>
-            ) : null}
+      <div
+        className={`relative z-10 flex min-h-[520px] w-full flex-col items-center justify-center py-20 ${sectionInsetX} lg:min-h-[680px] lg:py-[120px]`}
+      >
+        <div className="flex w-full max-w-4xl flex-col items-center gap-6 text-center">
+          {badge ? (
+            <div className="rule-ornament w-full max-w-sm">
+              <p className={eyebrowLabelOnDark}>{badge}</p>
+            </div>
+          ) : null}
 
-            <h2 className="font-brand text-3xl font-semibold leading-tight sm:text-4xl">
-              {title}
-            </h2>
+          <h2 className="w-full font-brand text-[2.5rem] font-semibold leading-[1.1] sm:text-5xl lg:text-[54px]">
+            {title}
+          </h2>
 
-            {description ? (
-              <p className="max-w-xl text-base leading-relaxed text-surface/75 lg:text-lg">
-                {description}
-              </p>
-            ) : null}
-
-            {primaryCta || secondaryCta ? (
-              <div className="flex flex-wrap items-center gap-3 pt-2">
-                {primaryCta ? (
-                  <ActionLink
-                    label={primaryCta.label}
-                    href={primaryCta.href}
-                    variant="primary"
-                  />
-                ) : null}
-                {secondaryCta ? (
-                  <ActionLink
-                    label={secondaryCta.label}
-                    href={secondaryCta.href}
-                    variant="secondary"
-                  />
-                ) : null}
-              </div>
-            ) : null}
-          </div>
+          {description ? (
+            <p className="w-full max-w-2xl text-lg leading-[1.6] text-surface/72 lg:text-xl">
+              {description}
+            </p>
+          ) : null}
         </div>
+
+        {primaryCta || secondaryCta ? (
+          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row lg:mt-12">
+            {primaryCta ? <CtaButton cta={primaryCta} variant="primary" /> : null}
+            {secondaryCta ? (
+              <CtaButton cta={secondaryCta} variant="secondaryOnDark" />
+            ) : null}
+          </div>
+        ) : null}
+
+        {/* Ornamental bottom rule */}
+        <div className="gold-rule mt-14 w-full max-w-xs lg:mt-16" />
       </div>
     </section>
   );

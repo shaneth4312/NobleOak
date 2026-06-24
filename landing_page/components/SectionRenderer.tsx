@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+import { Reveal } from "@/components/motion/Reveal";
 import { AboutBlock } from "@/components/blocks/AboutBlock";
 import { CaseStudiesBlock } from "@/components/blocks/CaseStudiesBlock";
 import { ContactFormBlock } from "@/components/blocks/ContactFormBlock";
@@ -15,6 +17,23 @@ type SectionRendererProps = {
   section: Section;
 };
 
+const REVEAL_SECTIONS = new Set<Section["type"]>([
+  "about",
+  "services",
+  "whyUs",
+  "logoPartners",
+  "testimonials",
+  "caseStudies",
+  "cta",
+  "contactForm",
+  "footer",
+]);
+
+function withReveal(type: Section["type"], content: ReactNode) {
+  if (!REVEAL_SECTIONS.has(type)) return content;
+  return <Reveal>{content}</Reveal>;
+}
+
 export function SectionRenderer({ section }: SectionRendererProps) {
   switch (section.type) {
     case "header":
@@ -22,23 +41,23 @@ export function SectionRenderer({ section }: SectionRendererProps) {
     case "hero":
       return <HeroBlock {...section} />;
     case "about":
-      return <AboutBlock {...section} />;
+      return withReveal("about", <AboutBlock {...section} />);
     case "services":
-      return <ServicesBlock {...section} />;
+      return withReveal("services", <ServicesBlock {...section} />);
     case "whyUs":
-      return <WhyUsBlock {...section} />;
-    case "cta":
-      return <CtaBlock {...section} />;
+      return withReveal("whyUs", <WhyUsBlock {...section} />);
     case "logoPartners":
-      return <LogoPartnersBlock {...section} />;
+      return withReveal("logoPartners", <LogoPartnersBlock {...section} />);
     case "testimonials":
-      return <TestimonialsBlock {...section} />;
+      return withReveal("testimonials", <TestimonialsBlock {...section} />);
     case "caseStudies":
-      return <CaseStudiesBlock {...section} />;
+      return withReveal("caseStudies", <CaseStudiesBlock {...section} />);
+    case "cta":
+      return withReveal("cta", <CtaBlock {...section} />);
     case "contactForm":
-      return <ContactFormBlock {...section} />;
+      return withReveal("contactForm", <ContactFormBlock {...section} />);
     case "footer":
-      return <FooterBlock {...section} />;
+      return withReveal("footer", <FooterBlock {...section} />);
     default:
       return null;
   }

@@ -1,10 +1,31 @@
-"use client";
-
-import { handleAnchorClick } from "@/lib/scrollToSection";
+import { BrandBackgroundShapes } from "@/components/BrandBackgroundShapes";
+import { CtaButton } from "@/components/ui/CtaButton";
+import { FramedImage } from "@/components/ui/FramedImage";
 import { resolveImageSrc, SECTION_IMAGES } from "@/lib/placeholderImage";
+import { bodyMuted, eyebrowLabel } from "@/lib/brand";
 import type { AboutSection } from "@/lib/types";
+import {
+  aboutTextColumn,
+  sectionGrid,
+  sectionInsetLeft,
+  sectionInsetRight,
+} from "@/lib/sectionLayout";
 
 type AboutBlockProps = Omit<AboutSection, "type">;
+
+function CheckIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" className="size-4 text-gold" aria-hidden="true">
+      <path
+        d="M4 10.5L8 14.5L16 6.5"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export function AboutBlock({
   eyebrow,
@@ -16,72 +37,67 @@ export function AboutBlock({
   link,
   image,
 }: AboutBlockProps) {
-  const imageSrc = resolveImageSrc(image?.src, SECTION_IMAGES.about);
-
   return (
-    <section id="about" className="bg-surface py-16 text-navy lg:py-24">
-      <div className="mx-auto max-w-7xl px-8 lg:px-16">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-start lg:gap-16">
-          <div className="flex flex-col gap-8">
-            <div className="flex flex-col gap-4">
-              {eyebrow ? (
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-forest">
-                  {eyebrow}
-                </p>
-              ) : null}
-
-              <h2 className="font-brand text-3xl font-semibold leading-tight sm:text-4xl lg:text-[2.75rem]">
-                {title}
-              </h2>
-            </div>
-
-            <div className="flex flex-col gap-4">
-              <p className="text-lg leading-relaxed text-navy">{introPrimary}</p>
-              <p className="text-base leading-relaxed text-charcoal/75">{introSecondary}</p>
-            </div>
-
-            {features.length > 0 ? (
-              <ul className="flex flex-col gap-3">
-                {features.map((feature) => (
-                  <li key={feature.label} className="flex items-start gap-3">
-                    <span
-                      className="mt-2 size-1.5 shrink-0 rounded-full bg-gold"
-                      aria-hidden="true"
-                    />
-                    <span className="text-base leading-snug text-navy">{feature.label}</span>
-                  </li>
-                ))}
-              </ul>
+    <section id="about" className="relative w-full overflow-hidden bg-white text-navy">
+      <BrandBackgroundShapes
+        letter="N"
+        corner="bottom-left"
+        scope="section"
+        side="left"
+        className="!z-[15]"
+      />
+      <div className={`relative z-10 ${sectionGrid} items-stretch py-16 lg:py-[120px]`}>
+        {/* ── Left column: eyebrow + heading + framed image ── */}
+        <div className={`flex w-full flex-col gap-12 self-stretch ${sectionInsetLeft}`}>
+          <div className="relative z-20 flex w-full flex-col gap-5">
+            {eyebrow ? (
+              <>
+                <div className="gold-bar" aria-hidden="true" />
+                <p className={eyebrowLabel}>{eyebrow}</p>
+              </>
             ) : null}
 
-            <p className="border-l-2 border-gold/40 pl-4 text-base leading-relaxed text-charcoal/75">
-              {closingText}
-            </p>
-
-            {link ? (
-              link.href ? (
-                <a
-                  href={link.href}
-                  className="inline-flex w-fit items-center text-sm font-semibold tracking-wide text-forest underline-offset-4 transition-colors hover:text-gold hover:underline"
-                  onClick={(e) => handleAnchorClick(e, link.href)}
-                >
-                  {link.label} →
-                </a>
-              ) : (
-                <span className="text-sm font-semibold text-forest">{link.label}</span>
-              )
-            ) : null}
+            <h2 className="w-full font-brand text-[2.25rem] font-semibold leading-[1.1] sm:text-5xl lg:text-[46px]">
+              {title}
+            </h2>
           </div>
 
-          <div className="lg:pt-8">
-            <div className="overflow-hidden rounded-xl border border-navy/10 bg-white p-3 shadow-lg shadow-navy/5">
-              <img
-                src={imageSrc}
-                alt={image?.alt ?? "Lorem ipsum dolor sit amet"}
-                className="aspect-[4/5] w-full rounded-lg object-cover sm:aspect-[5/6]"
-              />
+          <FramedImage
+            src={resolveImageSrc(image?.src, SECTION_IMAGES.about)}
+            alt={image?.alt ?? "About section image"}
+            className="relative z-10 h-[440px] w-full bg-forest/10"
+            gradient="from-navy/20 via-transparent to-transparent"
+          />
+        </div>
+
+        {/* ── Right column: body copy + features + CTA ── */}
+        <div className={`flex w-full flex-col justify-center ${sectionInsetRight} ${aboutTextColumn}`}>
+          <div className="flex w-full flex-col gap-5">
+            <p className="w-full text-xl leading-[1.6] text-navy">{introPrimary}</p>
+            <p className={`w-full text-base leading-[1.6] ${bodyMuted}`}>{introSecondary}</p>
+          </div>
+
+          {features.length > 0 ? (
+            <ul className="mt-10 flex w-full flex-col gap-5">
+              {features.map((feature) => (
+                <li key={feature.label} className="flex w-full items-center gap-4">
+                  <span className="flex size-8 shrink-0 items-center justify-center border border-gold/40 bg-surface/50">
+                    <CheckIcon />
+                  </span>
+                  <span className="text-lg leading-[1.4] text-navy">{feature.label}</span>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+
+          <div className="gold-rule mt-10" />
+          <p className={`mt-8 w-full text-base leading-[1.6] ${bodyMuted}`}>{closingText}</p>
+
+          {link ? (
+            <div className="mt-10">
+              <CtaButton cta={link} variant="primary" />
             </div>
-          </div>
+          ) : null}
         </div>
       </div>
     </section>

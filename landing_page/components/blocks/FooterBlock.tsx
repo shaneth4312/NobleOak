@@ -2,17 +2,47 @@
 
 import { useState, type FormEvent } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
+import { BrandBackgroundShapes } from "@/components/BrandBackgroundShapes";
+import { BRAND, btnPrimary, bodyMuted, eyebrowLabel } from "@/lib/brand";
 import type { FooterLink, FooterSection } from "@/lib/types";
+import { sectionInsetX } from "@/lib/sectionLayout";
 
 type FooterBlockProps = Omit<FooterSection, "type">;
 
+function PhoneIcon() {
+  return (
+    <svg viewBox="0 0 14 14" fill="none" className="size-3.5 shrink-0 text-gold" aria-hidden="true">
+      <path
+        d="M3.2 1.5h2.1l.9 2.1a1 1 0 0 1-.24 1.03l-1.28 1.28a8.5 8.5 0 0 0 3.98 3.98l1.28-1.28a1 1 0 0 1 1.03-.24l2.1.9v2.1a1 1 0 0 1-.92 1A11.5 11.5 0 0 1 2.2 2.42a1 1 0 0 1 1-1.02Z"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function MailIcon() {
+  return (
+    <svg viewBox="0 0 14 14" fill="none" className="size-3.5 shrink-0 text-gold" aria-hidden="true">
+      <path
+        d="M1.5 3h11L7 7.75 1.5 3Zm0 0v8h11V3"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 function FooterNavLink({ link }: { link: FooterLink }) {
-  const className =
-    "text-sm text-surface/65 transition-colors hover:text-gold";
+  const className = `${bodyMuted} transition-colors hover:text-gold`;
 
   if (link.href) {
     return (
-      <a href={link.href} className={className}>
+      <a className={className} href={link.href}>
         {link.label}
       </a>
     );
@@ -23,11 +53,9 @@ function FooterNavLink({ link }: { link: FooterLink }) {
 
 function LinkGroup({ title, links }: { title: string; links: FooterLink[] }) {
   return (
-    <div className="flex flex-col gap-4">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold">
-        {title}
-      </p>
-      <ul className="flex flex-col gap-2.5">
+    <div className="flex flex-col gap-8">
+      <p className={eyebrowLabel}>{title}</p>
+      <ul className="flex flex-col gap-3.5">
         {links.map((link) => (
           <li key={link.label}>
             <FooterNavLink link={link} />
@@ -88,32 +116,41 @@ export function FooterBlock({
   }
 
   return (
-    <footer className="bg-navy text-surface">
-      <div className="mx-auto max-w-7xl px-8 py-14 lg:px-16 lg:py-16">
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
-          <div className="flex flex-col gap-6 sm:col-span-2 lg:col-span-1">
-            <BrandLogo className="brightness-0 invert" />
-
-            {description ? (
-              <p className="text-sm leading-relaxed text-surface/65">{description}</p>
-            ) : null}
-
-            <div className="flex flex-col gap-2 text-sm">
-              {phone ? (
-                <a
-                  href={`tel:${phone.replace(/\s/g, "")}`}
-                  className="text-surface/80 transition-colors hover:text-gold"
-                >
-                  {phone}
-                </a>
+    <footer className="relative overflow-hidden border-t border-navy/10 bg-white text-navy">
+      <BrandBackgroundShapes letter="N" corner="bottom-right" scope="section" side="full" />
+      <div className={`relative z-10 ${sectionInsetX} pt-16 pb-10 lg:pt-[100px] lg:pb-10`}>
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,374px)_repeat(3,minmax(0,1fr))] lg:justify-between lg:gap-x-10 xl:gap-x-16">
+          <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-5">
+              <BrandLogo variant="mark" />
+              {description ? (
+                <p className={`w-full text-base leading-[1.4] ${bodyMuted}`}>{description}</p>
               ) : null}
+            </div>
+
+            <div className="flex flex-col gap-5">
+              {phone ? (
+                <div className="flex items-center gap-[15px]">
+                  <PhoneIcon />
+                  <a
+                    href={phone.startsWith("tel:") ? phone : `tel:${phone.replace(/\s/g, "")}`}
+                    className="font-mono text-sm uppercase leading-none tracking-[0.5px] text-navy transition-colors hover:text-gold"
+                  >
+                    {phone.replace(/^tel:/, "")}
+                  </a>
+                </div>
+              ) : null}
+
               {email ? (
-                <a
-                  href={`mailto:${email}`}
-                  className="text-surface/80 transition-colors hover:text-gold"
-                >
-                  {email}
-                </a>
+                <div className="flex items-center gap-[15px]">
+                  <MailIcon />
+                  <a
+                    href={`mailto:${email}`}
+                    className="font-mono text-sm uppercase leading-none tracking-[0.5px] text-navy transition-colors hover:text-gold"
+                  >
+                    {email}
+                  </a>
+                </div>
               ) : null}
             </div>
           </div>
@@ -123,64 +160,64 @@ export function FooterBlock({
           ))}
 
           {newsletter ? (
-            <div className="flex flex-col gap-4 sm:col-span-2 lg:col-span-1">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold">
-                {newsletter.title}
-              </p>
+            <div className="flex flex-col gap-8">
+              <p className={eyebrowLabel}>{newsletter.title}</p>
 
-              <form
-                className="flex flex-col gap-3"
-                onSubmit={handleNewsletterSubmit}
-                noValidate
-              >
+              <form className="flex flex-col gap-5" onSubmit={handleNewsletterSubmit} noValidate>
                 {newsletter.description ? (
-                  <p className="text-sm leading-relaxed text-surface/65">
+                  <p className={`w-full text-base leading-[1.4] ${bodyMuted}`}>
                     {newsletter.description}
                   </p>
                 ) : null}
 
-                <input
-                  id="footer-newsletter-email"
-                  name="email"
-                  type="email"
-                  required
-                  autoComplete="email"
-                  placeholder={newsletter.emailLabel ?? "Email"}
-                  aria-label={newsletter.emailLabel ?? "Email"}
-                  value={emailValue}
-                  onChange={(event) => {
-                    setEmailValue(event.target.value);
-                    setSubscribed(false);
-                    setFieldError(null);
-                    setFormError(null);
-                  }}
-                  aria-invalid={fieldError ? true : undefined}
-                  aria-describedby={fieldError ? "footer-newsletter-error" : undefined}
-                  className="w-full rounded border border-surface/20 bg-white/5 px-4 py-2.5 text-sm text-surface outline-none placeholder:text-surface/40 focus:border-gold/50"
-                />
-                {fieldError ? (
-                  <p id="footer-newsletter-error" className="text-sm text-red-300">
-                    {fieldError}
-                  </p>
-                ) : null}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="inline-flex w-fit rounded bg-gold px-5 py-2.5 text-[12px] font-semibold tracking-wide text-navy transition-colors hover:bg-surface disabled:cursor-not-allowed disabled:opacity-60"
-                >
-                  {isSubmitting
-                    ? "Subscribing..."
-                    : (newsletter.submitLabel ?? "Subscribe")}
-                </button>
+                <div className="flex w-full flex-col gap-10">
+                  <div className="border-b border-gold/40">
+                    <input
+                      id="footer-newsletter-email"
+                      name="email"
+                      type="email"
+                      required
+                      autoComplete="email"
+                      placeholder={newsletter.emailLabel ?? "Your Email"}
+                      aria-label={newsletter.emailLabel ?? "Your Email"}
+                      value={emailValue}
+                      onChange={(event) => {
+                        setEmailValue(event.target.value);
+                        setSubscribed(false);
+                        setFieldError(null);
+                        setFormError(null);
+                      }}
+                      aria-invalid={fieldError ? true : undefined}
+                      aria-describedby={fieldError ? "footer-newsletter-error" : undefined}
+                      className="w-full border-0 bg-transparent py-2 text-base text-navy outline-none placeholder:font-mono placeholder:text-sm placeholder:uppercase placeholder:tracking-[0.5px] placeholder:text-charcoal/50"
+                    />
+                  </div>
+
+                  {fieldError ? (
+                    <p id="footer-newsletter-error" className="text-sm text-red-600">
+                      {fieldError}
+                    </p>
+                  ) : null}
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className={`${btnPrimary} w-fit disabled:cursor-not-allowed disabled:opacity-60`}
+                  >
+                    {isSubmitting
+                      ? "Subscribing..."
+                      : (newsletter.submitLabel ?? "Subscribe")}
+                  </button>
+                </div>
 
                 {formError ? (
-                  <p className="text-sm text-red-300" role="alert">
+                  <p className="text-sm text-red-600" role="alert">
                     {formError}
                   </p>
                 ) : null}
 
                 {subscribed ? (
-                  <p className="text-sm text-gold" role="status">
+                  <p className="text-sm text-forest" role="status">
                     Thanks for subscribing.
                   </p>
                 ) : null}
@@ -189,12 +226,23 @@ export function FooterBlock({
           ) : null}
         </div>
 
-        <div className="mt-12 flex flex-col gap-3 border-t border-surface/15 pt-8 sm:flex-row sm:items-center sm:justify-between">
+        {/* Ornamental rule */}
+        <div className="rule-ornament mt-16 lg:mt-[80px]">
+          <p className="font-sans text-[11px] leading-none tracking-[0.5px] text-charcoal/40">
+            {BRAND.name}
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-4 pt-8 sm:flex-row sm:items-center sm:justify-between">
           {copyrightLeft ? (
-            <p className="text-xs text-surface/45">{copyrightLeft}</p>
+            <p className="font-sans text-[12px] leading-none text-charcoal/50">
+              {copyrightLeft}
+            </p>
           ) : null}
           {copyrightRight ? (
-            <p className="text-xs text-surface/45 sm:text-right">{copyrightRight}</p>
+            <p className="font-sans text-[12px] leading-none text-charcoal/50 sm:text-right">
+              {copyrightRight}
+            </p>
           ) : null}
         </div>
       </div>
