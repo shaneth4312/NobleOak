@@ -121,6 +121,80 @@ export type LogoPartnersSection = {
   partners: LogoPartner[];
 };
 
+export type WhyUsItem = {
+  number: string;
+  title: string;
+  description: string;
+};
+
+export type WhyUsSection = {
+  id: string;
+  type: "whyUs";
+  eyebrow?: string;
+  title: string;
+  items: WhyUsItem[];
+  cta?: {
+    label: string;
+    href?: string;
+  };
+  socialProof?: {
+    avatarCount: number;
+    label: string;
+    logos?: string[];
+  };
+  image?: {
+    src?: string;
+    alt: string;
+  };
+};
+
+export type Testimonial = {
+  quote: string;
+  authorName: string;
+  authorRole: string;
+  rating: number;
+  avatar?: string;
+};
+
+export type TestimonialsSection = {
+  id: string;
+  type: "testimonials";
+  eyebrow?: string;
+  title: string;
+  testimonials: Testimonial[];
+  seeAllLink?: {
+    label: string;
+    href?: string;
+  };
+  image?: {
+    src?: string;
+    alt: string;
+  };
+};
+
+export type CaseStudyItem = {
+  title: string;
+  description: string;
+  link?: {
+    label: string;
+    href?: string;
+  };
+  image?: { src: string };
+};
+
+export type CaseStudiesSection = {
+  id: string;
+  type: "caseStudies";
+  eyebrow?: string;
+  title?: string;
+  items: CaseStudyItem[];
+  footerText?: string;
+  seeAllLink?: {
+    label: string;
+    href?: string;
+  };
+};
+
 export type ContactFormSection = {
   id: string;
   type: "contactForm";
@@ -137,7 +211,7 @@ export type ContactFormSubmission = {
   email: string;
   businessName?: string;
   message: string;
-  service?: string;
+  service: string;
 };
 
 export type FooterLink = {
@@ -172,8 +246,11 @@ export type Section =
   | HeroSection
   | AboutSection
   | ServicesSection
+  | WhyUsSection
   | CtaSection
   | LogoPartnersSection
+  | TestimonialsSection
+  | CaseStudiesSection
   | ContactFormSection
   | FooterSection;
 

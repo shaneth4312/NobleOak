@@ -30,7 +30,6 @@ export function validateContactFormSubmission(
     typeof body.businessName === "string" ? body.businessName.trim() : "";
   const message = typeof body.message === "string" ? body.message.trim() : "";
   const service = typeof body.service === "string" ? body.service.trim() : "";
-  const includesAppointmentFields = "service" in body;
 
   if (!name) {
     errors.name = "Name is required";
@@ -64,14 +63,12 @@ export function validateContactFormSubmission(
     errors.message = "Message contains invalid content";
   }
 
-  if (includesAppointmentFields) {
-    if (!service) {
-      errors.service = "Service is required";
-    } else if (service.length > CONTACT_FORM_LIMITS.service.max) {
-      errors.service = `Service must be ${CONTACT_FORM_LIMITS.service.max} characters or fewer`;
-    } else if (containsUnsafeContent(service)) {
-      errors.service = "Service contains invalid content";
-    }
+  if (!service) {
+    errors.service = "Service is required";
+  } else if (service.length > CONTACT_FORM_LIMITS.service.max) {
+    errors.service = `Service must be ${CONTACT_FORM_LIMITS.service.max} characters or fewer`;
+  } else if (containsUnsafeContent(service)) {
+    errors.service = "Service contains invalid content";
   }
 
   if (Object.keys(errors).length > 0) {
@@ -84,8 +81,8 @@ export function validateContactFormSubmission(
       name,
       email,
       message,
+      service,
       ...(businessName ? { businessName } : {}),
-      ...(includesAppointmentFields ? { service } : {}),
     },
   };
 }

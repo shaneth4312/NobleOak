@@ -48,6 +48,12 @@ While doing that, I used AI to quickly template the logo partners, CTA, services
 
 A seed script has been created for local database setup — see [landing_page/README.md](./landing_page/README.md).
 
+I have since added new sections — **why us**, **testimonials**, and **case studies** — after looking through some competitor websites and concepts from other sites.
+
+Additionally, I took on board some additional server-side validation around the **service** field on the contact form, highlighted by AI. **[AI used]**
+
+I sourced new images for the new blocks and I am now working on design.
+
 ## Where AI was used
 
 - **Client discovery and website brief** — AI was used to turn my research bullet points into a structured brief within the time limit.
@@ -55,4 +61,4 @@ A seed script has been created for local database setup — see [landing_page/RE
 - **HTML prototyping** — AI was used to build three static style explorations and refine sections into the final prototype.
 - **README and setup documentation** — AI was used to restructure and lay out the README and setup instructions effectively, based on the task brief and my descriptions.
 - **Landing page blocks** — AI was used to quickly template the logo partners, CTA, services, and footer blocks based on my existing components.
-- **Form validation** — AI was used to test validation for errors and suggest improvements.
+- **Form validation** — AI was used to test validation for errors and suggest improvements, including additional server-side rules for the service field.

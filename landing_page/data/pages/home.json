@@ -115,6 +115,47 @@
     },
     {
       "id": "sec_4",
+      "type": "whyUs",
+      "eyebrow": "Lorem Ipsum",
+      "title": "Dolor sit amet consectetur adipiscing elit sed",
+      "items": [
+        {
+          "number": "01",
+          "title": "Lorem ipsum dolor",
+          "description": "Sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+          "number": "02",
+          "title": "Consectetur adipiscing",
+          "description": "Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        },
+        {
+          "number": "03",
+          "title": "Elit sed do eiusmod",
+          "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+        }
+      ],
+      "cta": {
+        "label": "Tempor Incididunt",
+        "href": "#contact"
+      },
+      "socialProof": {
+        "avatarCount": 3,
+        "label": "Ut labore et dolore magna aliqua enim ad minim",
+        "logos": [
+          "/images/logos/logoipsum-334.png",
+          "/images/logos/logoipsum-358.png",
+          "/images/logos/logoipsum-391.png",
+          "/images/logos/logoipsum-410.png"
+        ]
+      },
+      "image": {
+        "src": "/images/sections/Whyus.jpg",
+        "alt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      }
+    },
+    {
+      "id": "sec_5",
       "type": "cta",
       "badge": "Lorem ipsum dolor",
       "title": "Sit amet consectetur adipiscing elit",
@@ -133,7 +174,7 @@
       }
     },
     {
-      "id": "sec_5",
+      "id": "sec_6",
       "type": "logoPartners",
       "title": "Lorem ipsum dolor sit amet consectetur",
       "partners": [
@@ -148,7 +189,69 @@
       ]
     },
     {
-      "id": "sec_6",
+      "id": "sec_7",
+      "type": "testimonials",
+      "eyebrow": "Lorem Testimonials",
+      "title": "Dolor sit amet consectetur adipiscing",
+      "testimonials": [
+        {
+          "quote": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          "authorName": "Lorem Ipsum",
+          "authorRole": "Dolor sit amet",
+          "rating": 5,
+          "avatar": "/images/testimonials/pexels-kampus-8171180.jpg"
+        },
+        {
+          "quote": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "authorName": "Consectetur Elit",
+          "authorRole": "Sed do eiusmod",
+          "rating": 5,
+          "avatar": "/images/testimonials/pexels-sharon-snider-2339082-4000308.jpg"
+        },
+        {
+          "quote": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+          "authorName": "Tempor Incididunt",
+          "authorRole": "Ut labore et dolore",
+          "rating": 5,
+          "avatar": "/images/testimonials/pexels-gustavo-fring-4975756.jpg"
+        }
+      ],
+      "seeAllLink": {
+        "label": "Magna aliqua",
+        "href": "#testimonials"
+      },
+      "image": {
+        "src": "/images/sections/test-2.jpg",
+        "alt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      }
+    },
+    {
+      "id": "sec_8",
+      "type": "caseStudies",
+      "eyebrow": "Lorem Stories",
+      "title": "Consectetur adipiscing elit sed do",
+      "items": [
+        {
+          "title": "Lorem ipsum dolor sit",
+          "description": "Amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim.",
+          "link": { "label": "Veniam quis nostrud", "href": "#case-studies" },
+          "image": { "src": "/images/sections/case-study-succession.jpg" }
+        },
+        {
+          "title": "Exercitation ullamco laboris",
+          "description": "Nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.",
+          "link": { "label": "Excepteur sint occaecat", "href": "#case-studies" },
+          "image": { "src": "/images/sections/case-study-exit.jpg" }
+        }
+      ],
+      "footerText": "Sunt in culpa qui officia deserunt mollit anim id est laborum sed ut perspiciatis unde omnis iste natus error.",
+      "seeAllLink": {
+        "label": "Perspiciatis Unde",
+        "href": "#case-studies"
+      }
+    },
+    {
+      "id": "sec_9",
       "type": "contactForm",
       "eyebrow": "Lorem Ipsum",
       "title": "Dolor sit amet consectetur adipiscing",
@@ -164,7 +267,7 @@
       ]
     },
     {
-      "id": "sec_7",
+      "id": "sec_10",
       "type": "footer",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "phone": "+000 000 0000",

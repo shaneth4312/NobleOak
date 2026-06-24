@@ -1,6 +1,7 @@
 "use client";
 
 import { handleAnchorClick } from "@/lib/scrollToSection";
+import { resolveImageSrc, SECTION_IMAGES } from "@/lib/placeholderImage";
 import type { AboutSection } from "@/lib/types";
 
 type AboutBlockProps = Omit<AboutSection, "type">;
@@ -15,7 +16,7 @@ export function AboutBlock({
   link,
   image,
 }: AboutBlockProps) {
-  const imageSrc = image?.src ?? "/images/sections/About.jpg";
+  const imageSrc = resolveImageSrc(image?.src, SECTION_IMAGES.about);
 
   return (
     <section id="about" className="bg-surface py-16 text-navy lg:py-24">

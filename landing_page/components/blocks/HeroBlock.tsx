@@ -1,6 +1,7 @@
 "use client";
 
 import { handleAnchorClick } from "@/lib/scrollToSection";
+import { resolveImageSrc, SECTION_IMAGES } from "@/lib/placeholderImage";
 import type { HeroSection } from "@/lib/types";
 
 type HeroBlockProps = Omit<HeroSection, "type">;
@@ -37,7 +38,7 @@ export function HeroBlock({
   stats = [],
   image,
 }: HeroBlockProps) {
-  const imageSrc = image?.src ?? "/images/sections/Hero.jpg";
+  const imageSrc = resolveImageSrc(image?.src, SECTION_IMAGES.hero);
 
   return (
     <section className="relative overflow-hidden bg-navy text-surface">

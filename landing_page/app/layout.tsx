@@ -19,8 +19,8 @@ const brandSerif = Cinzel({
 });
 
 export const metadata: Metadata = {
-  title: "NobleOak Partners",
-  description: "Wealth, tax and succession advisory",
+  title: "Lorem Ipsum",
+  description: "Dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.",
 };
 
 export default function RootLayout({

@@ -1,8 +1,6 @@
+import { BRAND_IMAGES } from "./placeholderImage";
+
 export const BRAND = {
-    name: "NobleOak Partners",
-    logos: {
-      horizontal: "/images/brand/logo-horizontal.png",
-      mark: "/images/brand/logo-mark.png",
-    },
-  } as const;
-  
+  name: "Lorem Ipsum",
+  logos: BRAND_IMAGES,
+} as const;

@@ -1,6 +1,7 @@
 "use client";
 
 import { handleAnchorClick } from "@/lib/scrollToSection";
+import { resolveImageSrc, SECTION_IMAGES } from "@/lib/placeholderImage";
 import type { CtaSection } from "@/lib/types";
 
 type CtaBlockProps = Omit<CtaSection, "type">;
@@ -40,7 +41,7 @@ export function CtaBlock({
   secondaryCta,
   image,
 }: CtaBlockProps) {
-  const imageSrc = image?.src ?? "/images/sections/cta-1.jpg";
+  const imageSrc = resolveImageSrc(image?.src, SECTION_IMAGES.cta);
   const hideImageFromAssistiveTech = !image?.alt;
 
   return (

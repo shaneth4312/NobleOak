@@ -1,3 +1,4 @@
+import { PLACEHOLDER_IMAGE_SRC, resolveImageSrc } from "@/lib/placeholderImage";
 import type { LogoPartnersSection } from "@/lib/types";
 
 type LogoPartnersBlockProps = Omit<LogoPartnersSection, "type">;
@@ -18,7 +19,7 @@ export function LogoPartnersBlock({ title, partners }: LogoPartnersBlockProps) {
           {partners.map((partner) => (
             <li key={partner.name} className="flex items-center justify-center">
               <img
-                src={partner.src}
+                src={resolveImageSrc(partner.src, PLACEHOLDER_IMAGE_SRC)}
                 alt={partner.name}
                 width={partner.width}
                 height={partner.height}
