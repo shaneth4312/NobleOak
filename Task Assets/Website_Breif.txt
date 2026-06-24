@@ -1,0 +1,400 @@
+# NobleOak Partners - Discovery Research Pack
+
+## Company Overview
+
+### Who are NobleOak Partners?
+
+NobleOak Partners is a financial consultancy specialising in wealth management, tax planning and succession advisory services. The company primarily serves affluent individuals, families and organisations with complex financial requirements.
+
+Their services focus on helping clients preserve wealth, manage investments, optimise tax efficiency and plan for the transfer of assets between generations.
+
+While the company in this brief is fictional, it represents a typical high-net-worth wealth management consultancy operating within the UK financial services sector.
+
+---
+
+### What do they do?
+
+| Service                | Description                                                                               |
+| ---------------------- | ----------------------------------------------------------------------------------------- |
+| Wealth Management      | Investment management, financial planning and wealth preservation strategies              |
+| Tax Planning           | Structuring assets and finances to improve tax efficiency                                 |
+| Succession Advisory    | Planning the transfer of wealth, assets and businesses between generations                |
+| Family Office Support  | Advisory services for families with significant assets and complex financial arrangements |
+| Business Exit Planning | Supporting business owners through succession and sale planning                           |
+
+---
+
+### What do they want?
+
+Based on the brief provided, NobleOak Partners are rebuilding their website to:
+
+| Requirement                           | Reason                                                             |
+| ------------------------------------- | ------------------------------------------------------------------ |
+| Better reflect their brand            | Current website may not align with their market position           |
+| Improve mobile experience             | Increase engagement across mobile devices                          |
+| Increase high-quality lead generation | Generate more consultation enquiries from suitable prospects       |
+| Support marketing campaigns           | Create landing pages quickly without developer involvement         |
+| Improve content flexibility           | Allow marketing teams to adapt content and campaigns independently |
+
+---
+
+## User Groups
+
+### User Group 1: High-Net-Worth Individuals (HNWIs)
+
+#### Who are they?
+
+Individuals with substantial personal wealth who require specialist financial advice beyond standard banking and investment services.
+
+#### Age Range
+
+Typically 45–75 years old.
+
+#### What do they do?
+
+* Business owners
+* Company directors
+* Senior executives
+* Entrepreneurs
+* Retired professionals
+* Investors
+
+#### Who do they work with?
+
+* Wealth managers
+* Accountants
+* Tax advisers
+* Solicitors
+* Estate planners
+
+#### What are they looking for?
+
+* Wealth preservation
+* Investment growth
+* Tax efficiency
+* Retirement planning
+* Estate planning
+
+#### What is their aim?
+
+To protect and grow their wealth while ensuring financial security for themselves and future generations.
+
+#### Accessibility Considerations
+
+| Consideration       | Notes                                                   |
+| ------------------- | ------------------------------------------------------- |
+| Vision Impairments  | More common in older age groups                         |
+| Desktop Usage       | High usage during research and decision making          |
+| Mobile Usage        | Often used for initial browsing and communication       |
+| Large Screens       | Common within professional environments                 |
+| Slow Internet       | Generally low risk due to affluence and business access |
+| Hearing Impairments | Potential consideration within older demographics       |
+
+---
+
+### User Group 2: Family Offices
+
+#### Who are they?
+
+Organisations or individuals responsible for managing the wealth of affluent families across multiple generations.
+
+#### Age Range
+
+Typically 35–70 years old.
+
+#### What do they do?
+
+* Manage family investments
+* Coordinate advisers
+* Oversee governance structures
+* Manage estates and trusts
+
+#### Who do they work with?
+
+* Lawyers
+* Tax specialists
+* Investment managers
+* Trustees
+* Accountants
+
+#### What are they looking for?
+
+* Long-term wealth strategies
+* Succession planning
+* Governance expertise
+* Specialist financial advice
+
+#### What is their aim?
+
+To preserve family wealth and minimise risk over multiple generations.
+
+#### Accessibility Considerations
+
+| Consideration        | Notes                                                        |
+| -------------------- | ------------------------------------------------------------ |
+| Desktop Usage        | Primary research device                                      |
+| Large Displays       | Frequently used in office environments                       |
+| Content Downloads    | High likelihood of downloading reports and resources         |
+| International Access | Content may be viewed from multiple countries and time zones |
+| Mobile Usage         | Secondary device                                             |
+
+---
+
+### User Group 3: Business Owners
+
+#### Who are they?
+
+Owners of established businesses who are planning growth, succession or exit strategies.
+
+#### Age Range
+
+Typically 40–65 years old.
+
+#### What do they do?
+
+* Own and operate businesses
+* Lead management teams
+* Plan exits or acquisitions
+
+#### Who do they work with?
+
+* Corporate lawyers
+* Accountants
+* M&A advisers
+* Wealth managers
+
+#### What are they looking for?
+
+* Exit planning
+* Business succession
+* Tax-efficient sale strategies
+* Personal wealth planning
+
+#### What is their aim?
+
+To maximise the value of their business while planning for life after ownership.
+
+#### Accessibility Considerations
+
+| Consideration               | Notes                               |
+| --------------------------- | ----------------------------------- |
+| Mobile Usage                | High                                |
+| Desktop Usage               | High                                |
+| Time Constraints            | Limited time available for research |
+| Fast Access to Information  | Important                           |
+| Variable Network Conditions | May access content while travelling |
+
+---
+
+### User Group 4: Professional Referrers
+
+#### Who are they?
+
+Professionals who may refer clients to NobleOak Partners.
+
+#### Age Range
+
+Typically 30–65 years old.
+
+#### What do they do?
+
+* Provide legal advice
+* Provide tax advice
+* Manage client accounts
+* Deliver specialist financial services
+
+#### Who do they work with?
+
+* High-net-worth clients
+* Businesses
+* Family offices
+
+#### What are they looking for?
+
+* Trusted advisory partners
+* Specialist expertise
+* Reliable referral relationships
+
+#### What is their aim?
+
+To ensure their clients receive high-quality specialist advice while protecting their own professional reputation.
+
+#### Accessibility Considerations
+
+| Consideration        | Notes      |
+| -------------------- | ---------- |
+| Desktop Usage        | Very high  |
+| Multi-Screen Working | Common     |
+| Document Downloads   | High usage |
+| Mobile Usage         | Moderate   |
+
+---
+
+## Competitor Analysis
+
+### 1. St. James's Place
+
+#### Who are they?
+
+One of the UK's largest wealth management organisations with a nationwide adviser network.
+
+#### Why do people go to them?
+
+* Strong brand recognition
+* Large adviser network
+* Established reputation
+
+#### Pros
+
+* Trusted household name
+* Strong client resources
+* National presence
+
+#### Cons
+
+* Perceived as expensive by some clients
+* Can feel less personalised
+* Large corporate structure
+
+---
+
+### 2. Evelyn Partners
+
+#### Who are they?
+
+A UK wealth management and professional services firm offering integrated financial advice.
+
+#### Why do people go to them?
+
+* Combined wealth and tax expertise
+* Broad range of services
+* Strong reputation
+
+#### Pros
+
+* Comprehensive service offering
+* Professional content and resources
+* Strong digital presence
+
+#### Cons
+
+* Corporate feel
+* Less boutique positioning
+* Broad audience focus
+
+---
+
+### 3. Rathbones
+
+#### Who are they?
+
+A long-established UK investment and wealth management company.
+
+#### Why do people go to them?
+
+* Heritage and reputation
+* Investment expertise
+* Long-term stability
+
+#### Pros
+
+* Trusted brand
+* Established history
+* Strong investment credentials
+
+#### Cons
+
+* Traditional image
+* Less modern digital experience
+* Can appear less approachable
+
+---
+
+### 4. Tilney
+
+#### Who are they?
+
+A wealth management business serving affluent individuals and families.
+
+#### Why do people go to them?
+
+* Personal financial planning
+* Wealth management expertise
+* Strong advisory offering
+
+#### Pros
+
+* Experienced advisers
+* Broad service range
+* Strong HNWI focus
+
+#### Cons
+
+* Service complexity
+* Competitive marketplace
+* Less differentiated positioning
+
+---
+
+### 5. Schroders Personal Wealth
+
+#### Who are they?
+
+A financial planning and wealth management business backed by a major investment institution.
+
+#### Why do people go to them?
+
+* Institutional reputation
+* Financial planning expertise
+* Investment management capabilities
+
+#### Pros
+
+* Strong backing and credibility
+* National reach
+* Trusted brand
+
+#### Cons
+
+* Less personal experience
+* Corporate positioning
+* Less exclusive feel
+
+---
+
+## Aims of the Campaign
+
+### Primary Objectives
+
+| Objective             | Description                                                  |
+| --------------------- | ------------------------------------------------------------ |
+| Lead Generation       | Generate qualified consultation enquiries                    |
+| Brand Positioning     | Strengthen perception as a premium advisory firm             |
+| Mobile Experience     | Improve engagement and conversion on mobile devices          |
+| Marketing Flexibility | Enable campaign creation without heavy developer involvement |
+
+---
+
+### Key Performance Indicators (KPIs)
+
+| KPI                    | Measurement                                      |
+| ---------------------- | ------------------------------------------------ |
+| Consultation Requests  | Number of enquiry submissions                    |
+| Qualified Leads        | Leads meeting target client criteria             |
+| Conversion Rate        | Visitor-to-lead conversion percentage            |
+| Mobile Conversion Rate | Mobile-specific conversion performance           |
+| Form Completion Rate   | Percentage of users completing lead forms        |
+| Campaign Engagement    | Time on page, content interactions and downloads |
+
+---
+
+### Success Criteria
+
+The campaign should:
+
+* Increase the number of qualified enquiries.
+* Improve the quality of leads entering the sales process.
+* Establish trust with affluent audiences.
+* Support future marketing campaigns through reusable content structures.
+* Deliver a consistent experience across desktop, tablet and mobile devices.
+* Provide marketing teams with the flexibility to create and update campaign content without significant technical support.
