@@ -6,16 +6,72 @@
         "id": "sec_0",
         "type": "header",
         "navLinks": [
-          { "label": "About", "href": "#about" },
-          { "label": "Services", "href": "#services" },
-          { "label": "Why Us", "href": "#why-us" },
-          { "label": "Testimonials", "href": "#testimonials" },
-          { "label": "Contact", "href": "#contact" }
+          { "label": "Lorem", "href": "#about" },
+          { "label": "Ipsum", "href": "#services" },
+          { "label": "Dolor", "href": "#why-us" },
+          { "label": "Sit", "href": "#testimonials" },
+          { "label": "Amet", "href": "#contact" }
         ],
         "cta": {
-          "label": "Book a Consultation",
+          "label": "Consectetur Elit",
           "href": "#contact"
+        }
+      },
+      {
+        "id": "sec_1",
+        "type": "hero",
+        "eyebrow": "Lorem · Ipsum · Dolor",
+        "headline": "Lorem ipsum dolor sit amet, consectetur adipiscing.",
+        "subheading": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.",
+        "primaryCta": {
+          "label": "Lorem Ipsum",
+          "href": "#contact"
+        },
+        "secondaryCta": {
+          "label": "Dolor Sit Amet  +000 000 0000",
+          "href": "tel:+0000000000"
+        },
+        "stats": [
+          {
+            "value": "100+",
+            "label": "Lorem ipsum dolor sit amet"
+          },
+          {
+            "value": "99%",
+            "label": "Consectetur adipiscing elit sed"
+          },
+          {
+            "value": "20+",
+            "label": "Do eiusmod tempor incididunt"
+          }
+        ],
+        "image": {
+          "src": "/images/sections/Hero.jpg",
+          "alt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        }
+      },
+      {
+        "id": "sec_2",
+        "type": "about",
+        "eyebrow": "Lorem Ipsum",
+        "title": "Dolor sit amet consectetur adipiscing elit",
+        "introPrimary": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+        "introSecondary": "Nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "features": [
+          { "label": "Excepteur sint occaecat cupidatat non proident" },
+          { "label": "Sunt in culpa qui officia deserunt mollit" },
+          { "label": "Anim id est laborum sed ut perspiciatis" }
+        ],
+        "closingText": "Unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore.",
+        "link": {
+          "label": "Veniam quis nostrud",
+          "href": "#services"
+        },
+        "image": {
+          "src": "/images/sections/About.jpg",
+          "alt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
         }
       }
     ]
   }
+  

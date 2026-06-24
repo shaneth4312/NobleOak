@@ -1,4 +1,4 @@
-import { HeaderBlock } from "@/components/blocks/HeaderBlock";
+import { SectionRenderer } from "@/components/SectionRenderer";
 import { getPageBySlug } from "@/lib/getPage";
 import { notFound } from "next/navigation";
 
@@ -9,15 +9,11 @@ export default async function Home() {
     notFound();
   }
 
-  const header = page.sections.find((section) => section.type === "header");
-
-  if (!header || header.type !== "header") {
-    return null;
-  }
-
   return (
     <main>
-      <HeaderBlock {...header} />
+      {page.sections.map((section) => (
+        <SectionRenderer key={section.id} section={section} />
+      ))}
     </main>
   );
 }
