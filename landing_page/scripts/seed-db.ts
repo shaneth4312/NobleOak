@@ -33,6 +33,19 @@ async function seed() {
     const leadCount = await leads.countDocuments();
     console.log(`  Documents: ${leadCount}`);
 
+    const newsletterSubscriptions = db.collection("newsletterSubscriptions");
+
+    await newsletterSubscriptions.createIndex({ createdAt: -1 });
+    await newsletterSubscriptions.createIndex({ email: 1 }, { unique: true });
+    await newsletterSubscriptions.createIndex({ id: 1 }, { unique: true });
+
+    console.log("Collection: newsletterSubscriptions");
+    console.log("  Indexes: createdAt (desc), email (unique), id (unique)");
+    console.log("  Document shape: { id, email, createdAt }");
+
+    const subscriptionCount = await newsletterSubscriptions.countDocuments();
+    console.log(`  Documents: ${subscriptionCount}`);
+
     console.log("Database setup complete.");
   } finally {
     await client.close();

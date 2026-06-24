@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, type FormEvent } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
 import type { FooterLink, FooterSection } from "@/lib/types";
 
@@ -44,6 +47,46 @@ export function FooterBlock({
   copyrightLeft,
   copyrightRight,
 }: FooterBlockProps) {
+  const [emailValue, setEmailValue] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [fieldError, setFieldError] = useState<string | null>(null);
+  const [formError, setFormError] = useState<string | null>(null);
+
+  async function handleNewsletterSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setFieldError(null);
+    setFormError(null);
+    setSubscribed(false);
+
+    try {
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: emailValue }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        if (result.details?.email) {
+          setFieldError(result.details.email as string);
+        } else {
+          setFormError(result.error ?? "Something went wrong");
+        }
+        return;
+      }
+
+      setSubscribed(true);
+      setEmailValue("");
+    } catch {
+      setFormError("Something went wrong");
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
   return (
     <footer className="bg-navy text-surface">
       <div className="mx-auto max-w-7xl px-8 py-14 lg:px-16 lg:py-16">
@@ -85,28 +128,62 @@ export function FooterBlock({
                 {newsletter.title}
               </p>
 
-              {newsletter.description ? (
-                <p className="text-sm leading-relaxed text-surface/65">
-                  {newsletter.description}
-                </p>
-              ) : null}
+              <form
+                className="flex flex-col gap-3"
+                onSubmit={handleNewsletterSubmit}
+                noValidate
+              >
+                {newsletter.description ? (
+                  <p className="text-sm leading-relaxed text-surface/65">
+                    {newsletter.description}
+                  </p>
+                ) : null}
 
-              <form className="flex flex-col gap-3">
                 <input
                   id="footer-newsletter-email"
                   name="email"
                   type="email"
+                  required
                   autoComplete="email"
                   placeholder={newsletter.emailLabel ?? "Email"}
                   aria-label={newsletter.emailLabel ?? "Email"}
+                  value={emailValue}
+                  onChange={(event) => {
+                    setEmailValue(event.target.value);
+                    setSubscribed(false);
+                    setFieldError(null);
+                    setFormError(null);
+                  }}
+                  aria-invalid={fieldError ? true : undefined}
+                  aria-describedby={fieldError ? "footer-newsletter-error" : undefined}
                   className="w-full rounded border border-surface/20 bg-white/5 px-4 py-2.5 text-sm text-surface outline-none placeholder:text-surface/40 focus:border-gold/50"
                 />
+                {fieldError ? (
+                  <p id="footer-newsletter-error" className="text-sm text-red-300">
+                    {fieldError}
+                  </p>
+                ) : null}
                 <button
-                  type="button"
-                  className="inline-flex w-fit rounded bg-gold px-5 py-2.5 text-[12px] font-semibold tracking-wide text-navy transition-colors hover:bg-surface"
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="inline-flex w-fit rounded bg-gold px-5 py-2.5 text-[12px] font-semibold tracking-wide text-navy transition-colors hover:bg-surface disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  {newsletter.submitLabel ?? "Subscribe"}
+                  {isSubmitting
+                    ? "Subscribing..."
+                    : (newsletter.submitLabel ?? "Subscribe")}
                 </button>
+
+                {formError ? (
+                  <p className="text-sm text-red-300" role="alert">
+                    {formError}
+                  </p>
+                ) : null}
+
+                {subscribed ? (
+                  <p className="text-sm text-gold" role="status">
+                    Thanks for subscribing.
+                  </p>
+                ) : null}
               </form>
             </div>
           ) : null}

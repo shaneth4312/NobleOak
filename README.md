@@ -54,6 +54,8 @@ Additionally, I took on board some additional server-side validation around the 
 
 I sourced new images for the new blocks and I am now working on design.
 
+I added a [`/api/newsletter`](./landing_page/app/api/newsletter/route.ts) route to submit newsletter sign-ups through to the database.
+
 ## Where AI was used
 
 - **Client discovery and website brief** — AI was used to turn my research bullet points into a structured brief within the time limit.
