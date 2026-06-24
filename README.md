@@ -26,4 +26,12 @@ However, in the past two years I have adapted to use AI for prototyping — stil
 - [style-2-sanctuary.html](./Prototype/style-2-sanctuary.html)
 - [style-3-nocturne.html](./Prototype/style-3-nocturne.html)
 
-After it generated the designs, I went through and picked sections I liked the layout of. I further refined these by providing placeholder images and asking Composer 2.5 to create 50/50 sections like the about us section, a card section for services ( as i believe these are compact but impactful), and a why us section with client logos (using placeholders). I pulled these together into a final prototype, which I will use as inspiration for the task — [index.html](./final_prototype/index.html).
+After it generated the designs, I went through and picked sections I liked the layout of. I further refined these by providing placeholder images and asking Composer 2.5 to create 50/50 sections like the about us section, a card section for services (as I believe these are compact but impactful), and a why us section with client logos (using placeholders). I pulled these together into a final prototype, which I will use as inspiration for the task — [index.html](./final_prototype/index.html).
+
+----
+
+Now the fun part — creating the landing page. For this project I chose Next.js — it's fast, quick to build with, well supported, and has a strong ecosystem of packages I can lean on to create an impactful site. API routes give a clear place to enforce validation and security, and integration with SQL or NoSQL databases is straightforward. The task outlines that *"You may mock persistence and external services (e.g. using in-memory storage or static JSON), but structure your code as if these were real integrations."* — I plan to reflect that in the project. I'll use a JSON file to define the overall structure and content of the website. The task also mentions: *"Design the data structure so marketing teams could extend this later. Your model should allow new section types to be added in future without requiring significant backend changes."* Using JSON lets me outline types and content that can be easily edited or extended.
+
+With that in mind, I'm planning to use MongoDB — a NoSQL database that stores data in a JSON-like format. That keeps things straightforward for a marketing team and would allow form submissions or future confidential data to be stored in an easy-to-read structure.
+
+The final build lives in the [landing_page](./landing_page/) folder.
